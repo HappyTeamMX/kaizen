@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  .container
+    .subhead New Simulation
+    .well.col-sm-12
+      .controls.col-sm-offset-3
+        span.add(data="column")
+          i.fa.fa-plus
+          span Add Column
+        span.remove(data="column")
+          i.fa.fa-minus
+          span Remove Column
+
+      .row
+        .controls.col-sm-3
+          div
+            span.add(data="station")
+              i.fa.fa-plus
+              span Add Row
+          div
+            span.remove(data="station")
+              i.fa.fa-minus
+              span Remove Row
+        .well.layout.col-sm-9
+          .column(data-number=1)
+            .workstation
+              i.fa.fa-gears
+            .workstation
+              i.fa.fa-gears
+            .workstation
+              i.fa.fa-gears
+            .workstation
+              i.fa.fa-gears
+          .column(data-number=2)
+            .workstation
+              i.fa.fa-gears
+            .workstation
+              i.fa.fa-gears
+          .column(data-number=3)
+            .workstation
+              i.fa.fa-gears
+            .workstation
+              i.fa.fa-gears
+            .workstation
+              i.fa.fa-gears

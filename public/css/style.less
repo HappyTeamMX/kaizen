@@ -1,0 +1,112 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+// variables
+
+@coal:#393939;
+@lavanderblue:#5849CC;
+@limesoda:#9EBF30;
+@tart:#FFC200;
+@flamefire:#F51100;
+@vertical_rythm:60px;
+
+
+
+// General
+body, html { margin: 0; padding: 0; color: @coal; font-size: 16px; line-height: 1.618em; font-family: "Roboto" }
+
+.headline { font-size: 2.618em; }
+.subhead  { font-size: 1.618em; }
+.bodycopy { font-size: 1em;     }
+.byline   { font-size: 0.618em; }
+
+.right{ float: right; }
+.left { float: left; }
+
+a {
+  text-decoration: none;
+  &:link    { color: @lavanderblue; }
+  &:visited { color: @flamefire;}
+  &:hover   { color: @limesoda;}
+  &:active  { color: @tart; }
+}
+
+input { color: #676767; font-size: 95%; }
+
+// Overwrites
+//- no rounded plz
+div, button, .btn, nav { border-radius: 0 !important; }
+i.fa{ margin: 0 6px; }
+
+.btn{
+  background: @lavanderblue;
+  color: white; margin: 0 5px;
+  &:link    { background: @lavanderblue; }
+  &:visited { background: @flamefire;}
+  &:hover   { background: @limesoda;}
+  &:active  { background: @tart; }
+}
+
+// Site Styles
+
+// login
+button.login { width: 100%; }
+
+// home
+.actions { padding-top: @vertical_rythm/4;}
+ul.list{
+  list-style: none;
+  & li{
+    margin: @vertical_rythm/6 0;
+    cursor: pointer;
+  }
+}
+
+.status{
+  &.done    { color: @limesoda; }
+  &.pending { color: @tart; }
+  &.canceled{ color: @flamefire; }
+  &.active  { color: @lavanderblue; }
+}
+
+// new sim
+.layout {
+  background: white;
+}
+
+.controls {
+
+  & span {
+    cursor: pointer;
+  }
+}
+
+.column {
+  margin: 0 10px;
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 5px;
+
+  &:hover{
+    background: lightgrey;
+  }
+  &.selected{
+    background: lightgrey;
+  }
+}
+
+.workstation{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: solid @coal 1px;
+  margin: 10px 0;
+  background: white;
+
+  & i{
+    line-height: 40px;
+    margin: 0;
+    font-size: 2.1em;
+  }
+}

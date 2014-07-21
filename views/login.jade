@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div.container.login
+    .well.col-sm-7.col-sm-offset-3
+      form.form-horizontal(action='', method='POST', role='form')
+        .form-group
+          legend Welcome to Kaizen
+        .form-group
+          label.col-sm-4.control-label(for="username") Username
+          input.col-sm-6(type="text")
+        .form-group
+          label.col-sm-4.control-label(for="username") Password
+          input.col-sm-6(type="password")
+        .form-group
+          .col-sm-4.col-sm-offset-4
+            button.btn.login(type='submit') Submit
+        .right
+          a.byline(href="lost") Forgot password?

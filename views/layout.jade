@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title=title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    // CDN CSS
+    link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    // link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", rel="stylesheet")
+    // Site CSS
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    header
+      nav(role="navigation").navbar.navbar-default
+        .navbar-header
+          button(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href="/").navbar-brand=title
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav.navbar-right
+            li: a(href="#")
+              i.fa.fa-sign-out
+              | rvalencia
+    .content
+      block content
+
+    footer
+
+    // CDN JS
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    // Site JS
+    script(src="/js/script.js")
