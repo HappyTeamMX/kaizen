@@ -26,6 +26,6 @@ block content
           .stations.col-sm-3(ng:repeat="station in stations", data-id="{{station.id}}")
             span.station-name {{ station.name }}
             .units
-              .workstation(ng:repeat="unit in station.operators")
+              .workstation(ng:repeat="unit in station.units")
                 i.fa.fa-gears(ng:click="save()")
 
