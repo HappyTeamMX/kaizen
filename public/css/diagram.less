@@ -1,0 +1,70 @@
+@coal:#393939;
+@lavanderblue:#5849CC;
+@limesoda:#9EBF30;
+@tart:#FFC200;
+@flamefire:#F51100;
+@vr:60px;
+
+
+// new sim
+.layout {
+  background: white;
+  min-height: @vr;
+}
+
+
+.units{
+  width: 40px;
+  margin: 0 auto;
+}
+
+.station-name{
+  background-color: silver;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.controls {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  & .control {
+    cursor: pointer;
+  }
+}
+
+.column {
+  margin: 0 10px;
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 5px;
+
+}
+
+.stations{
+
+  &:hover,
+  &.selected{
+    background: lightgrey;
+  }
+
+}
+
+.workstation{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: solid @coal 1px;
+  margin: 10px 0;
+  background: white;
+
+  & i{
+    line-height: 40px;
+    margin: 0;
+    font-size: 2.1em;
+  }
+}
