@@ -9,6 +9,12 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+// DB
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/kaizen');
+
+
 var app = express();
 
 // view engine setup
@@ -22,6 +28,12 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// make db accesible to routers
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
 
 // add controllers to app
 app.use('/', routes);

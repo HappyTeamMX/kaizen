@@ -8,6 +8,10 @@ $(function () {
   });
   $('.status').addClass('fa fa-circle');
 
+  $(".alert").hide();
+  $(".alert").alert();
+
+
   //$('.diagram').diagram();
 
 });

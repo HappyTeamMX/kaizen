@@ -2,7 +2,31 @@ extends layout
 
 block content
   .container
-    .subhead New Simulation
+    .alert.alert-success.alert-dismissible.fade-in(role="alert")
+      button.close(type='button', data-dismiss='alert')
+        span(aria-hidden='true') ×
+        span.sr-only Close
+      strong Simulation Saved!
+      a(href="/") Go back home
+    .subhead {{ simulation.name }}
+    hr
+    .row
+      .simulation-data.col-sm-5.col-sm-offset-1
+        .row
+          label Name:
+          .input-field {{ simulation.name }}
+          .flip
+            input(ng:value="'{{ simulation.name }}'", ng:model="simulation.name")
+        .row
+          label Date:
+          .input-field {{ simulation.date }}
+          .flip
+            input(type="date", ng:value="'{{ simulation.date }}'", ng:model="simulation.date")
+        .row
+          label Takt time:
+          .input-field {{ simulation.takt_time }}
+          .flip
+            input(type="time", ng:value="'{{ simulation.tackt_time }}'", ng:model="simulation.tackt_time")
     .well.col-sm-12
       .diagram
         .controls.col-sm-3
@@ -23,9 +47,40 @@ block content
               i.fa.fa-minus
               span Remove
         .layout.col-sm-9
-          .stations.col-sm-3(ng:repeat="station in stations", data-id="{{station.id}}")
-            span.station-name {{ station.name }}
+          .stations.col-sm-2(ng:repeat="station in simulation.stations", data-id="{{station.id}}")
+            span.station-name.input-field {{ station.type.name }}
+            .flip
+              select(ng:model="station.type", ng:options="type.name for type in station_type")
             .units
               .workstation(ng:repeat="unit in station.units")
-                i.fa.fa-gears(ng:click="save()")
+                span(data-toggle='modal', data-target='.modal-{{unit.id}}')
+                  i.fa.fa-gears
+                .modal.fade(class="modal-{{unit.id}}",tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        button.close(type='button', data-dismiss='modal')
+                          span(aria-hidden='true') ×
+                          span.sr-only Close
+                        h4#myModalLabel.modal-title Station Data for {{ unit.name }}
+                      .modal-body
+                        .row
+                          label Name:
+                          .input-field {{ unit.name }}
+                          .flip
+                            input(ng:value="'{{ unit.name }}'", ng:model="unit.name")
+                        .row
+                          label Error Interval:
+                          .input-field {{ unit.err_interval }}
+                          .flip
+                            input(type="time", ng:value="'{{ unit.err_interval }}'", ng:model="unit.err_interval")
+                        .row
+                          label Error Duration:
+                          .input-field {{ unit.err_duration }}
+                          .flip
+                            input(type="time", ng:value="'{{ unit.err_duration }}'", ng:model="unit.err_duration")
+                      .modal-footer
+                        button.btn.btn-default(type='button', data-dismiss='modal') Done
+        button.btn.right(ng:click="save()") Save Simulation
+
 

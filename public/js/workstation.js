@@ -1,72 +1,179 @@
 
-// UI functions
-$(function(){
-  $('.stations').click(function(){
-    $('.stations').removeClass('selected');
-    $(this).addClass('selected');
-  });
-
-});
-
-
 var workstation = angular.module('workstation',[]);
 
 workstation.controller('WorkstationCntrl', function ($scope) {
   // get data ajax
-  $scope.stations = [{
-    id: '68d82650-16e7-11e4-993f-ed87dfbc4232',
-    name:'Warehouse',
-    units: [{
-      user:'11'},{
-      user:'12'}
-    ]
-  },{
-    id: '6986b5d0-16e7-11e4-993f-ed87dfbc4232',
-    name:'Assambly',
-    units: [{
-      user:'21'},{
-      user:'22'}
-    ]
-  },{
-    id: '6a7582a0-16e7-11e4-993f-ed87dfbc4232',
-    name:'QA',
-    units: [{
-      user:'31'},{
-      user:'32'}
-    ]
-  }];
-  
-  window.data = $scope.stations;
+  $scope.station_type = [{name:'Warehouse'}, {name:'Start Station'}, {name:'Workstation'}, {name:'Quality'}, {name:'Customer'}, ];
+
+  $scope.simulation = {
+    id:get_id(7),
+    name:'Simulation',
+    date: '20/07/2014',
+    takt_time:'03:00',
+    stations: [{
+      id: get_id(8),
+      type:{name:'Workstation'},
+      units: [{
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }, {
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }, {
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }
+      ]
+    },{
+      id: get_id(8),
+      type:{name:'Workstation'},
+      units:  [{
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }, {
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }, {
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }
+      ]
+    },{
+      id: get_id(8),
+      type:{name:'Workstation'},
+      units:  [{
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }, {
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }, {
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }
+      ]
+    }]
+  };
+
 
   $scope.save = function(){
-    console.log(this.stations);
+    console.log(this.simulation);
+    $('.alert-success').show("slow");
   }
+
+
   $scope.control_action = function(action, target){
-
-
+    // Remove Column
     if( target === "column" && action === "remove"){
-
+      this.simulation.stations.pop();
     }
-
-    // add - create new column, add it a station and rebind click event
+    // Add Column
+    // - create new column, add it a station and rebind click event
     if( target === "column" && action === "add"){
-      this.stations.push({name:'New Column',operators:[{user:'41'}]});
+      this.simulation.stations.push( {
+        id: get_id(8),
+        name:'Station',
+        type:{name:'Workstation'},
+        units: [{
+          id:get_id(4),
+          name:'Station',
+          std_dev: '00:00',
+          err_interval:'00:00',
+          err_duration:'00:30'
+        }]
+      });
     }
 
-    // stations
-    // remove - whipe out the station. adieu
+
+    // Remove station
+    // - whipe out the station. adieu
     if( target === "station" && action === "remove"){
+      var column_id = $('.stations.selected').attr('data-id');
+      this.simulation.stations.forEach(function(each){
+        if (each.id === column_id){
+          each.units.pop();
+          return;
+        }
+      });
 
     }
-    // add - add new station at end of column
+    // Add Station
+    // - add new station at end of column
     if( target === "station" && action === "add"){
       var column_id = $('.stations.selected').attr('data-id');
-      this.stations.forEach(function(each){
+      this.simulation.stations.forEach(function(each){
         if (each.id === column_id){
-          each.units.push({user:'22'});
+          each.units.push({
+            id:get_id(4),
+            name:'Station',
+            std_dev: '00:00',
+            err_interval:'00:00',
+            err_duration:'00:30'
+          });
+          return;
         }
       });
     }
-  }
+
+  }// end event
+
+
+});
+
+// JQuery and UI Functions
+// helper functions
+
+// bigger offset = smaller id
+function get_id(offset){
+  return uuid.v4().substring(0,offset);
+}
+
+// UI functions
+$(function(){
+  // AJS faster than light so we bind to the parent
+  $('.container').on('click','.stations',function(){
+    $('.stations').removeClass('selected');
+    $(this).addClass('selected');
+  });
+
+  $('.container').on('dblclick','.input-field',function(){
+    $(this).slideToggle();
+    $(this).next('.flip').slideToggle();
+    $(this).next('.flip').children('input').focus();
+  });
+
+  $('.container').on('keypress','.flip',function(key){
+    if(key.charCode == 13){
+      $(this).prev('.input-field').slideToggle();
+      $(this).slideToggle();
+    }
+  });
 
 });

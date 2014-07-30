@@ -8,12 +8,14 @@
 @limesoda:#9EBF30;
 @tart:#FFC200;
 @flamefire:#F51100;
-@vertical_rythm:60px;
+@vr:60px;
 
 
 
 // General
 body, html { margin: 0; padding: 0; color: @coal; font-size: 16px; line-height: 1.618em; font-family: "Roboto" }
+
+label { display: inline-block; width: 100px; margin-right: 15px; }
 
 .headline { font-size: 2.618em; }
 .subhead  { font-size: 1.618em; }
@@ -47,17 +49,23 @@ i.fa{ margin: 0 6px; }
   &:active  { background: @tart; }
 }
 
+.alert{
+  & a{
+    margin-left: @vr / 4;
+  }
+}
+
 // Site Styles
 
 // login
 button.login { width: 100%; }
 
 // home
-.actions { padding-top: @vertical_rythm/4;}
+.actions { padding-top: @vr/4;}
 ul.list{
   list-style: none;
   & li{
-    margin: @vertical_rythm/6 0;
+    margin: @vr/6 0;
     cursor: pointer;
   }
 }
