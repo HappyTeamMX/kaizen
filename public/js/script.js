@@ -12,7 +12,26 @@ $(function () {
   $(".alert").alert();
 
 
-  //$('.diagram').diagram();
+  $('.datepicker').datetimepicker({
+    pickTime: false,
+    icons:{
+      date: 'fa fa-calendar',
+      up: "fa fa-arrow-up",
+      down: "fa fa-arrow-down"
+    }
+  });
+
+  $('.timepicker').datetimepicker({
+    pickDate: false,
+    format:'HH:mm',
+    useCurrent: false,
+    icons:{
+      date: 'fa fa-calendar',
+      up: "fa fa-arrow-up",
+      down: "fa fa-arrow-down"
+    }
+  });
+
 
 });
 

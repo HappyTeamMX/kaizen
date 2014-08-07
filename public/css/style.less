@@ -10,13 +10,12 @@
 @flamefire:#F51100;
 @vr:60px;
 
-
-
 // General
 body, html { margin: 0; padding: 0; color: @coal; font-size: 16px; line-height: 1.618em; font-family: "Roboto" }
-
 label { display: inline-block; width: 100px; margin-right: 15px; }
-
+footer{ position: fixed; bottom: 0; height: @vr/2; width: 100%; background-color: @coal; }
+.content{ padding-bottom: @vr; }
+// class
 .headline { font-size: 2.618em; }
 .subhead  { font-size: 1.618em; }
 .bodycopy { font-size: 1em;     }
@@ -24,6 +23,12 @@ label { display: inline-block; width: 100px; margin-right: 15px; }
 
 .right{ float: right; }
 .left { float: left; }
+
+.k-done{ background-color: @lavanderblue; }
+.k-success{ background-color: @limesoda; }
+.k-warning{ background-color: @tart; }
+.k-error{ background-color: @flamefire; }
+
 
 a {
   text-decoration: none;
@@ -40,14 +45,6 @@ input { color: #676767; font-size: 95%; }
 div, button, .btn, nav { border-radius: 0 !important; }
 i.fa{ margin: 0 6px; }
 
-.btn{
-  background: @lavanderblue;
-  color: white; margin: 0 5px;
-  &:link    { background: @lavanderblue; }
-  &:visited { color: white;}
-  &:hover   { background: @limesoda;}
-  &:active  { background: @tart; }
-}
 
 .alert{
   & a{

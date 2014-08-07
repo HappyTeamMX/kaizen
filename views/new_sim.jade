@@ -16,17 +16,30 @@ block content
           label Name:
           .input-field {{ simulation.name }}
           .flip
-            input(ng:value="'{{ simulation.name }}'", ng:model="simulation.name")
+            .input-group
+              input.form-control(ng:value="'{{ simulation.name }}'", ng:model="simulation.name")
+              span.input-group-btn
+                button.btn(type="button")
+                  i.fa.fa-check
         .row
           label Date:
           .input-field {{ simulation.date }}
           .flip
-            input(type="date", ng:value="'{{ simulation.date }}'", ng:model="simulation.date")
+            .input-group
+              input.datepicker.form-control(ng:value="'{{ simulation.date }}'", ng:model="simulation.date")
+              span.input-group-btn
+                button.btn(type="button")
+                  i.fa.fa-check
         .row
           label Takt time:
           .input-field {{ simulation.takt_time }}
           .flip
-            input(type="time", ng:value="'{{ simulation.tackt_time }}'", ng:model="simulation.tackt_time")
+            .input-group
+              input.form-control.timepicker(ng:value="'{{ simulation.takt_time }}'", ng:model="simulation.takt_time")
+              span.input-group-btn
+                button.btn(type="button")
+                  i.fa.fa-check
+
     .well.col-sm-12
       .diagram
         .controls.col-sm-3
@@ -62,25 +75,36 @@ block content
                         button.close(type='button', data-dismiss='modal')
                           span(aria-hidden='true') ×
                           span.sr-only Close
-                        h4#myModalLabel.modal-title Station Data for {{ unit.name }}
+                        h4#myModalLabel.modal-title Data for {{ unit.name }}
                       .modal-body
                         .row
                           label Name:
                           .input-field {{ unit.name }}
                           .flip
-                            input(ng:value="'{{ unit.name }}'", ng:model="unit.name")
+                            .input-group
+                              input.form-control(ng:value="'{{ unit.name }}'", ng:model="unit.name")
+                              span.input-group-btn
+                                button.btn(type="button")
+                                  i.fa.fa-check
                         .row
                           label Error Interval:
                           .input-field {{ unit.err_interval }}
                           .flip
-                            input(type="time", ng:value="'{{ unit.err_interval }}'", ng:model="unit.err_interval")
+                            .input-group
+                              input.form-control.timepicker(ng:value="'{{ unit.err_interval }}'", ng:model="unit.err_interval")
+                              span.input-group-btn
+                                button.btn(type="button")
+                                  i.fa.fa-check
                         .row
                           label Error Duration:
                           .input-field {{ unit.err_duration }}
                           .flip
-                            input(type="time", ng:value="'{{ unit.err_duration }}'", ng:model="unit.err_duration")
+                            .input-group
+                              input.form-control.timepicker(ng:value="'{{ unit.err_duration }}'", ng:model="unit.err_duration")
+                              span.input-group-btn
+                                button.btn(type="button")
+                                  i.fa.fa-check
                       .modal-footer
                         button.btn.btn-default(type='button', data-dismiss='modal') Done
         button.btn.right(ng:click="save()") Save Simulation
-
 
