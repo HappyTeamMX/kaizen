@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule (.*) http://kaizen.codingdiaries.com:3000 [R=301,L]

@@ -6,8 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // load controllers
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var main_controller = require('./routes/main');
+var simulation_controller = require('./routes/simulation');
+var stations_controller = require('./routes/stations');
+
 
 // DB
 var mongo = require('mongodb');
@@ -36,8 +38,9 @@ app.use(function(req,res,next){
 });
 
 // add controllers to app
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', main_controller);
+app.use('/', simulation_controller);
+app.use('/', stations_controller);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

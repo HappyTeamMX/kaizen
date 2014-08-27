@@ -1,7 +1,7 @@
 
 var workstation = angular.module('workstation',[]);
 
-workstation.controller('WorkstationCntrl', function ($scope) {
+workstation.controller('WorkstationCntrl', function ($scope, $http) {
   // get data ajax
   $scope.station_type = [{name:'Supplier'}, {name:'Warehouse'}, {name:'Start Station'}, {name:'Workstation'}, {name:'Quality'}, {name:'Customer'}, ];
 
@@ -59,17 +59,8 @@ workstation.controller('WorkstationCntrl', function ($scope) {
 
   $scope.save = function(){
     console.log(this.simulation);
-    var request = $http({
-      method: "post",
-      url: "/save_simulation",
-      data: {
-        sim:this.simulation
-      }
-    });
     // Store the data-dump of the FORM scope.
-    request.success(
-      $('.alert-success').show("slow");
-    );
+    // var request = $http({method: "post", url: "/simulation/save", data: {sim:this.simulation } });
   }
 
 

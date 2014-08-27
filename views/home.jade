@@ -4,7 +4,7 @@ block content
   .container
     .well.col-sm-7.col-sm-offset-3
       .actions.row
-        a.btn.right(href="/new_simulation")
+        a.btn.right(href="/simulation/new")
           i.fa.fa-plus
           | New Simulation
       .lastest.col-sm-offset-1
@@ -12,35 +12,7 @@ block content
         ul.list
           li
             i.status.done
-            span(class="pop", data-toggle="popover") [Simulation name | Date]
-              .popover
-                span
-                  a.btn Diagram
-                  a.btn Data
-          li
-            i.status.pending
-            span(class="pop", data-toggle="popover") [Simulation name | Date]
-              .popover
-                span
-                  a.btn Diagram
-                  a.btn Data
-          li
-            i.status.canceled
-            span(class="pop", data-toggle="popover") [Simulation name | Date]
-              .popover
-                span
-                  a.btn Diagram
-                  a.btn Data
-          li
-            i.status.done
-            span(class="pop", data-toggle="popover") [Simulation name | Date]
-              .popover
-                span
-                  a.btn Diagram
-                  a.btn Data
-          li
-            i.status.active
-            span(class="pop", data-toggle="popover") [Simulation name | Date]
+            span(class="pop", data-toggle="popover") [ sim.name| sim.date ]
               .popover
                 span
                   a.btn Diagram

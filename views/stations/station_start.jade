@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  .container
+    .row
+      ul.tickets
+          li.note.selected
+            span Lorem ipsum dolor sit amet.
+          li.note
+            span Lorem ipsum dolor sit amet.
+          li.note
+            span Lorem ipsum dolor sit amet.
+          li.note
+            span Lorem ipsum dolor sit amet.
+          li.note
+            span Lorem ipsum dolor sit amet.
+    .row
+      .timer.col-sm-4.col-sm-offset-4 10:00
+    .row
+      .controls
+        .form-inline
+          .form-group
+            label Item ID
+            input(type="text")
+          .form-group
+            button.btn.btn-info Start
+          .form-group.send-to
+            label Send To
+            select
+              option Warehouse
+              option Station A
+              option Station B
+              option Station C
+              option QA 1
+            button.btn(type="button")
+                  i.fa.fa-check

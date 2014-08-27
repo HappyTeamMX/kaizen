@@ -1,0 +1,53 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+// variables
+
+@coal:#393939;
+@lavanderblue:#5849CC;
+@limesoda:#9EBF30;
+@tart:#FFC200;
+@flamefire:#F51100;
+@vr:60px;
+
+
+.no-select{-webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
+
+
+.note {
+  .no-select;
+  display: inline-block;
+  position: relative;
+  margin: 0 @vr / 4;
+  padding: 20px;
+  width: @vr * 2;
+  font-family: 'Roboto';
+  color: @coal;
+  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+  background: #eae672;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+  cursor: pointer;
+
+  &.selected{
+    background: #82BEFA;
+  }
+}
+
+.timer{
+  .no-select;
+  font-size: 3em;
+  text-align: center;
+  font-weight: 300;
+  line-height: 3.1em;
+}
+
+.controls{
+  text-align: center;
+  .btn{
+    margin: 0 15px;
+  }
+}

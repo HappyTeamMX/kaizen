@@ -1,0 +1,42 @@
+doctype html
+html(lang="en", ng-app="workstation")
+  head
+    title=title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    // CDN CSS
+    link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    link(href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css", rel="stylesheet")
+    // Site CSS
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/workstation.css')
+  body(ng-controller="WorkstationCntrl")
+    header
+      nav(role="navigation").navbar.navbar-default
+        .navbar-header
+          button(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href="/").navbar-brand=title
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav.navbar-right
+            li: a(href="#")
+              i.fa.fa-sign-out
+              | rvalencia
+    .content
+      block content
+    footer
+
+    // CDN JS
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.js")
+    // AJS dependencies
+    script(src="/js/uuid.js")
+    // Angular App
+    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js")
+    script(src="/js/workstation.js")
+    // Site Script
+    script(src="/js/script.js")
