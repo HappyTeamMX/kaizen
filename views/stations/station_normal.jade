@@ -4,14 +4,22 @@ block content
   .container
     .row
       ul.tickets
+          li.note.selected(data-id="")
+            span 52b7
+          li.note(data-id="")
+            span od29
+          li.note(data-id="")
+            span 056w
+          li.note(data-id="")
+            span 056w
+          li.note(data-id="")
+            span 20p4
     .row
       .timer.col-sm-4.col-sm-offset-4
     .row
       .controls
         .form
           .form-group#start
-            label Item ID
-            input(type="text")
             button.btn.btn-info Start
           .form-group.send-to
             label Send To
@@ -25,3 +33,4 @@ block content
                   i.fa.fa-check
           .form-group#end
             button.btn.btn-info End
+
