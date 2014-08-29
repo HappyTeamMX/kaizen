@@ -60,7 +60,7 @@ workstation.controller('WorkstationCntrl', function ($scope, $http) {
   $scope.save = function(){
     console.log(this.simulation);
     // Store the data-dump of the FORM scope.
-    // var request = $http({method: "post", url: "/simulation/save", data: {sim:this.simulation } });
+    var request = $http({method: "post", url: "/simulation/save", data: {sim:this.simulation } });
   }
 
 
