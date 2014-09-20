@@ -31,12 +31,4 @@ $(function () {
       $('.note.started.selected').hide('swing');
       $('.note.started.selected').removeClass('selected');
     });
-
-
-
-
 });
-
-$(document).ready( function () {
-    $('.dataTable').DataTable();
-} );

@@ -6,9 +6,10 @@ html(lang="en", ng-app="workstation")
     // CDN CSS
     link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
     link(href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css", rel="stylesheet")
+    link(href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css", rel="stylesheet")
     // Site CSS
-    link(rel='stylesheet', href='/css/style.css')
-    link(rel='stylesheet', href='/css/workstation.css')
+    link(rel='stylesheet/less', href='/css/style.less')
+    link(rel='stylesheet/less', href='/css/workstation.less')
   body(ng-controller="WorkstationCntrl")
     header
       nav(role="navigation").navbar.navbar-default
@@ -33,6 +34,8 @@ html(lang="en", ng-app="workstation")
     script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js")
+    script(src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js")
     // AJS dependencies
     script(src="/js/uuid.js")
     // Angular App

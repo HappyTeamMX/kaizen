@@ -10,12 +10,14 @@ router.get('/', function(req, res) {
 
 // Main page manager
 router.get('/home', function(req, res) {
-  //var db = req.db;
-  //var collection = db.get('simulations');
-  //collection.find({},{},function(e,docs){console.log('var for test',test); console.log(docs,test); res.render('home', {simulations: docs, title: 'Kaizen'}); });
-  res.render('home',{title: 'Kaizen'});
+  var mongodb = req.db;
+  var collection = mongodb.get('simulations');
+  collection.find({},{limit:5},function(e,docs){
+    res.render('home', {
+      'simulations': docs,
+      'title' : 'Kaizen'
+    });
+  });
 });
-
-
 
 module.exports = router;

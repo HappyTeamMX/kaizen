@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var debug = require('debug');
 
 // load controllers
 var main_controller = require('./routes/main');
@@ -39,8 +40,8 @@ app.use(function(req,res,next){
 
 // add controllers to app
 app.use('/', main_controller);
-app.use('/', simulation_controller);
-app.use('/', stations_controller);
+app.use('/simulation', simulation_controller);
+app.use('/station', stations_controller);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

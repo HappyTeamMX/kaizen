@@ -3,13 +3,17 @@ var router = express.Router();
 
 
 // New simulation manager
-router.get('/simulation/new', function(req, res) {
+router.get('/new', function(req, res) {
   res.render('simulation/workstation', { title: 'Kaizen' });
+});
+
+router.get('/list', function(req, res) {
+  res.render('simulation/simulation_list', { title: 'Kaizen' });
 });
 
 
 // Save simulation manager
-router.post('/simulation/save', function(req, res) {
+router.post('/save', function(req, res) {
   // Set our internal DB variable
   var db = req.db;
   // Set our collection
