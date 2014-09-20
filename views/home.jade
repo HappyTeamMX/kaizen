@@ -10,13 +10,14 @@ block content
       .lastest.col-sm-offset-1
         .subhead Lastest Simulations
         ul.list
-          li
-            i.status.done
-            span(class="pop", data-toggle="popover") [ sim.name| sim.date ]
-              .popover
-                span
-                  a.btn Diagram
-                  a.btn Data
+          for item in simulations
+            li
+              i.status.done
+              span(class="pop", data-toggle="popover") [ #{item.name} | #{item.date} ]
+                .popover
+                  span
+                    a.btn Diagram
+                    a.btn Data
       .actions.row
         a.btn.right
           | View all
