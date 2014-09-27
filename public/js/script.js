@@ -32,6 +32,7 @@ $(function () {
     }
   });
 
+  $('.dataTable').DataTable();
 
 });
 
