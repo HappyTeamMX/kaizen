@@ -8,7 +8,14 @@ router.get('/new', function(req, res) {
 });
 
 router.get('/list', function(req, res) {
-  res.render('simulation/simulation_list', { title: 'Kaizen' });
+  var mongodb = req.db;
+  var collection = mongodb.get('simulations');
+  collection.find({},function(e,docs){
+    res.render('simulation/simulation_list', {
+      title: 'Kaizen',
+      'simulations': docs,
+    });
+  });
 });
 
 

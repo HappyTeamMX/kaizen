@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug');
+var passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 // load controllers
 var main_controller = require('./routes/main');
@@ -15,7 +17,7 @@ var stations_controller = require('./routes/stations');
 // DB
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/kaizen');
+var db = monk('mongodb://kaizenuser:kaizenpass@ds041160.mongolab.com:41160/kaizen_project');
 
 
 var app = express();
@@ -31,6 +33,8 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // make db accesible to routers
 app.use(function(req,res,next){
