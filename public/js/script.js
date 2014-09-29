@@ -36,3 +36,14 @@ $(function () {
 
 });
 
+function Validate(){
+  var oli = document.getElementById('oli').value;
+  if (oli != 'kaizen'){
+    window.confirm('Contraseña o usuario incorrectos');
+  } else {
+    document.location.href = '/home';
+  } 
+  
+}
+
+

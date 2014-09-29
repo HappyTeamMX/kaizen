@@ -3,7 +3,7 @@ extends layout
 block content
   div.container.login
     .well.col-sm-7.col-sm-offset-3
-      form.form-horizontal(action='/home', method='GET', role='form')
+      div.form-horizontal
         .form-group
           legend Welcome to Kaizen
         .form-group
@@ -11,9 +11,9 @@ block content
           input.col-sm-6(type="text")
         .form-group
           label.col-sm-4.control-label(for="username") Password
-          input.col-sm-6(type="password")
+          input.col-sm-6#oli(type="password")
         .form-group
           .col-sm-4.col-sm-offset-4
-            button.btn.login(type='submit') Submit
+            button.btn.login(type='submit' onclick='Validate()') Submit
         .right
           a.byline(href="lost") Forgot password?
