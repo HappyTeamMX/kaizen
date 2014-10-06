@@ -36,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // make db accesible to routers
 app.use(function(req,res,next){
     req.db = db;

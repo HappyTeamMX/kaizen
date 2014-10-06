@@ -18,6 +18,31 @@ router.get('/list', function(req, res) {
   });
 });
 
+router.get('/detail/:sim_id', function(req, res) {
+  var mongodb = req.db;
+  var collection = mongodb.get('simulations');
+  var sim_id = req.param("sim_id");
+  collection.findOne({id:sim_id},function(e,docs){
+    res.render('simulation/simulation_detail', {
+      title: 'Kaizen',
+      id:sim_id
+    });
+  });
+});
+
+
+router.get('/load/:sim_id', function(req, res) {
+  var mongodb = req.db;
+  var collection = mongodb.get('simulations');
+  var sim_id = req.param("sim_id");
+  console.log(sim_id);
+  collection.findOne({id:sim_id},function(e,docs){
+    res.send(JSON.stringify(docs));
+  });
+});
+
+
+
 
 // Save simulation manager
 router.post('/save', function(req, res) {
