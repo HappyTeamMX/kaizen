@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="/js/workstation.js")
   .container
     .alert.alert-success.alert-dismissible.fade-in(role="alert")
       button.close(type='button', data-dismiss='alert')
@@ -108,3 +109,5 @@ block content
                         button.btn.btn-default(type='button', data-dismiss='modal') Done
         button.btn.right(ng:click="save()") Save Simulation
 
+block extended-scripts
+  script(src="/js/workstation.js")

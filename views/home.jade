@@ -16,7 +16,7 @@ block content
               span(class="pop", data-toggle="popover") [ #{item.name} | #{item.date} ]
                 .popover
                   span
-                    a.btn Diagram
+                    a.btn(href="/simulation/detail/#{item.id}") Diagram
                     a.btn Data
       .actions.row
         a.btn.right(href="simulation/list")
