@@ -2,12 +2,12 @@ $(function () {
 
   $('.pop').popover({
     html: true,
-    content: function () {
+    content: function() {
       return $(this).children('.popover').html();
     }
   });
-  $('.status').addClass('fa fa-circle');
 
+  $('.status').addClass('fa fa-circle');
   $(".alert").hide();
   $(".alert").alert();
 
@@ -42,8 +42,8 @@ function Validate(){
     window.confirm('Contraseña o usuario incorrectos');
   } else {
     document.location.href = '/home';
-  } 
-  
+  }
+
 }
 
 
