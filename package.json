@@ -15,9 +15,14 @@
     "cookie-parser":    "*",
     "body-parser":      "*",
     "debug":            "*",
+    "ejs" :             "*",
     "jade":             "*",
     "less-middleware":  "*",
     "mongodb":          "*",
-    "monk":             "*"
+    "monk":             "*",
+    "mongoose" :        "*",
+    "connect-flash" :   "*",
+    "bcrypt-nodejs" :   "*",
+    "consolidate" :     "*"    
   }
 }
