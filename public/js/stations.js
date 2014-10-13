@@ -2,11 +2,11 @@ $(function () {
     // on load
     $('.send-to').hide();
 
+
     // bindings
     $('body').on('click','.note',function(){
         $('.note').removeClass('selected');
         $(this).addClass('selected');
-
     });
 
     $('body').on('click','#start button, #start-normal button',function(){
@@ -23,12 +23,15 @@ $(function () {
       $('#start').slideToggle();
       $('.send-to').slideToggle();
       $('.note.selected').addClass('started');
-
     });
-
 
     $('body').on('click','#end button',function(){
       $('.note.started.selected').hide('swing');
       $('.note.started.selected').removeClass('selected');
     });
+    
+});
+
+$(window).load(function(){
+    $('#myModal').modal('show');
 });

@@ -1,15 +1,24 @@
-
 var workstation = angular.module('workstation',[]);
 
-workstation.controller('WorkstationCntrl', function ($scope, $http) {
+workstation.controller('Workstation', function ($scope, $http) {
   // get data ajax
-  $scope.station_type = [{name:'Supplier'}, {name:'Warehouse'}, {name:'Start Station'}, {name:'Workstation'}, {name:'Quality'}, {name:'Customer'}, ];
+
+  $http.get('/data/station_types')
+    .then(function(result) {
+      $scope.station_type = result.data;
+  });
+    
+  $http.get('/data/simulation_status')
+    .then(function(result) {
+      $scope.simulation_status = result.data;
+  });
 
   $scope.simulation = {
     id:get_id(7),
-    name:'Simulation',
-    date: '20/07/2014',
+    name:'New Simulation',
+    date: moment().format('DD/MM/YYYY'),
     takt_time:'03:00',
+    status: {name:'Select status...'},
     stations: [
       {
         id: get_id(8),
@@ -18,13 +27,14 @@ workstation.controller('WorkstationCntrl', function ($scope, $http) {
           {id:get_id(4), name:'Supplier 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'}
         ]
       },{
-        id: get_id(8), type:{name:'Warehouse'},
+        id: get_id(8), 
+        type : {name:'Warehouse'},
         units:  [
           {id:get_id(4), name:'Warehouse 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
           {id:get_id(4), name:'Warehouse 2', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
           {id:get_id(4), name:'Warehouse 3', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'}
-        ] },
-      {
+        ]
+      },{
         id: get_id(8),
         type:{name:'Workstation'},
         units:  [
@@ -60,7 +70,10 @@ workstation.controller('WorkstationCntrl', function ($scope, $http) {
   $scope.save = function(){
     console.log(this.simulation);
     // Store the data-dump of the FORM scope.
-    var request = $http({method: "post", url: "/simulation/save", data: {sim:this.simulation } });
+    var request = $http.post("/simulation/save",{sim:this.simulation })
+      .success(function(){
+        $('.alert').show();
+    });
   }
 
 
@@ -132,10 +145,10 @@ $(function(){
   $('.container').on('click','.input-field',function(){
     $(this).slideToggle();
     $(this).next('.flip').slideToggle();
-    $(this).next('.flip').children('input').focus();
+    $(this).next('.flip').children('input, select').focus();
   });
 
-  $('.container').on('blur','.flip select',function(){
+  $('.layout').on('blur','.flip select',function(){
     $(this).parent().prev('.input-field').slideToggle();
     $(this).parent().slideToggle();
   });

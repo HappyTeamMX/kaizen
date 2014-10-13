@@ -12,7 +12,7 @@ block content
         ul.list
           for item in simulations
             li
-              i.status.done
+              i.status(class="#{ item.status.name }")
               span(class="pop", data-toggle="popover") [ #{item.name} | #{item.date} ]
                 .popover
                   span

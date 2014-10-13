@@ -8,8 +8,8 @@ html(lang="en")
     link(href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css", rel="stylesheet")
     link(href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css", rel="stylesheet")
     // Site CSS
-    link(rel='stylesheet/less', href='/css/style.less')
-    link(rel='stylesheet/less', href='/css/stations.less')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/stations.css')
   body
     header
       nav(role="navigation").navbar.navbar-default
@@ -19,12 +19,12 @@ html(lang="en")
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a(href="/").navbar-brand=title
+          .navbar-brand=title
         .collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.navbar-nav.navbar-right
             li: a(href="#")
               i.fa.fa-sign-out
-              | rvalencia
+              | kaizen
     .content
       block content
     footer
@@ -36,8 +36,8 @@ html(lang="en")
     script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.js")
     script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js")
     script(src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js")
-
-    // AJS dependencies
+    script(src="https://cdn.socket.io/socket.io-1.1.0.js")
+    // AngularJS dependencies
     script(src="/js/uuid.js")
     // Angular App
       pass

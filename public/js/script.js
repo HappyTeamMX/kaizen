@@ -14,6 +14,7 @@ $(function () {
 
   $('.datepicker').datetimepicker({
     pickTime: false,
+    format:'DD/MM/YYYY',
     icons:{
       date: 'fa fa-calendar',
       up: "fa fa-arrow-up",

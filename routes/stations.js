@@ -1,20 +1,26 @@
-var express = require('express');
-var router = express.Router();
-
-
+var app = require('express.io')();
+app.http().io();
 
 // Start simulation template
-router.get('/start', function(req, res) {
+app.get('/start', function(req, res) {
   res.render('stations/station_start', { title: 'Kaizen' });
 });
 
+// Broadcast Manager
+app.io.route('ready', function(req) {
+    req.io.join(req.data);
+    req.io.room(req.data).broadcast('announce', {
+        message: 'New client in the ' + req.data + ' room. '
+    });
+});
+
 // Normal simulation template
-router.get('/normal', function(req, res) {
+app.get('/normal', function(req, res) {
   res.render('stations/station_normal', { title: 'Kaizen' });
 });
 
 // Generic
-//router.get('quality', function(req, res) {
+//app.get('quality', function(req, res) {
 //  res.render('stations/station_qa', { title: 'Kaizen' });
 //});
 
@@ -22,4 +28,4 @@ router.get('/normal', function(req, res) {
 
 
 
-module.exports = router;
+module.exports = app;

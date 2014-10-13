@@ -1,7 +1,5 @@
 extends layout
 
-
-
 block content
 
   .container
@@ -13,11 +11,17 @@ block content
             th Name
             th Date
             th Status
-            th Action
+            th Actions
           tbody
             for item in simulations
               tr
                 td #{ item.name }
                 td #{ item.date }
-                td Completed
-                td Diagram|Data
+                td 
+                  i.status(class="#{ item.status.name }") 
+                    i.fa.fa-circle
+                  span #{ item.status.name }
+                td 
+                  a(href="/simulation/detail/#{ item.id }") Diagram
+                  span   |   
+                  a(href="#") Data
