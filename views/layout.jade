@@ -20,9 +20,11 @@ html(lang="en")
           a(href="/home").navbar-brand=title
         .collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.navbar-nav.navbar-right
-            li: a(href="#")
-              i.fa.fa-sign-out
-              | kaizen
+            li
+              span.user kaizen
+            li
+              a(href="/logout")
+                i.fa.fa-sign-out Logout
     .content
       block content
     footer

@@ -1,7 +1,6 @@
 extends layout
 
 block content
-
   .container
     h1.title Simulation List
     .well.col-sm-10.col-sm-offset-1
@@ -19,9 +18,11 @@ block content
                 td #{ item.date }
                 td 
                   i.status(class="#{ item.status.name }") 
-                    i.fa.fa-circle
                   span #{ item.status.name }
                 td 
                   a(href="/simulation/detail/#{ item.id }") Diagram
                   span   |   
                   a(href="#") Data
+
+block extended-scripts
+  script(src="/js/workstation.js")

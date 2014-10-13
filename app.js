@@ -10,8 +10,7 @@ var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
 // load controllers
-var main_controller = require('./routes/main');
-var simulation_controller = require('./routes/simulation');
+var data_controller = require('./routes/data');
 var stations_controller = require('./routes/stations');
 
 
@@ -57,7 +56,8 @@ app.use(function(req,res,next){
 
 // add controllers to app
 require('./app/routes.js')(app, passport);
-app.use('/simulation', simulation_controller);
+
+app.use('/data', data_controller);
 app.use('/station', stations_controller);
 
 /// catch 404 and forward to error handler
