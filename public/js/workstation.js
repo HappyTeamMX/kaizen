@@ -22,13 +22,13 @@ workstation.controller('Workstation', function ($scope, $http) {
     stations: [
       {
         id: get_id(8),
-        type:{name:'Supplier'},
+        type:{"id":200,"name":"Supplier","station_uri":"normal"},
         units: [
           {id:get_id(4), name:'Supplier 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'}
         ]
       },{
         id: get_id(8), 
-        type : {name:'Warehouse'},
+        type : {"id":201,"name":"Warehouse","station_uri":"normal"},
         units:  [
           {id:get_id(4), name:'Warehouse 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
           {id:get_id(4), name:'Warehouse 2', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
@@ -36,7 +36,7 @@ workstation.controller('Workstation', function ($scope, $http) {
         ]
       },{
         id: get_id(8),
-        type:{name:'Workstation'},
+        type:{"id":203,"name":"Workstation","station_uri":"normal"},
         units:  [
           {id:get_id(4), name:'Workstation 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
           {id:get_id(4), name:'Workstation 2', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
@@ -44,7 +44,7 @@ workstation.controller('Workstation', function ($scope, $http) {
         ]
       },{
         id: get_id(8),
-        type:{name:'Start Station'},
+        type:{"id":202,"name":"Start Station","station_uri":"start"},
         units:  [
           {id:get_id(4), name:'Start Station 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
           {id:get_id(4), name:'Start Station 2', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'},
@@ -52,13 +52,13 @@ workstation.controller('Workstation', function ($scope, $http) {
         ]
       },{
         id: get_id(8),
-        type:{name:'Quality'},
+        type:{"id":204,"name":"Quality","station_uri":"quality"},
         units:[
           {id:get_id(4), name:'Quality 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'}
         ]
       },{
         id: get_id(8),
-        type:{name:'Customer'},
+        type:{"id":205,"name":"Customer","station_uri":"customer"},
         units:  [
           {id:get_id(4), name:'Customer 1', std_dev: '00:00', err_interval:'00:00', err_duration:'00:30'}
         ]
@@ -72,8 +72,9 @@ workstation.controller('Workstation', function ($scope, $http) {
     // Store the data-dump of the FORM scope.
     var request = $http.post("/simulation/save",{sim:this.simulation })
       .success(function(){
-        $('.alert').show();
-    });
+        $('.alert').show(); 
+      }
+    );
   }
 
 
