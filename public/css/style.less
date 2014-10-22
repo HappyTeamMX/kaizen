@@ -24,11 +24,10 @@ footer{ position: fixed; bottom: 0; height: @vr/2; width: 100%; background-color
 .right{ float: right; }
 .left { float: left; }
 
-.k-done{ background-color: @lavanderblue; }
-.k-success{ background-color: @limesoda; }
-.k-warning{ background-color: @tart; }
-.k-error{ background-color: @flamefire; }
-
+.k-done    { background-color: @lavanderblue; }
+.k-success { background-color: @limesoda; }
+.k-warning { background-color: @tart; }
+.k-error   { background-color: @flamefire; }
 
 a {
   text-decoration: none;
@@ -36,10 +35,13 @@ a {
   &:visited { color: @flamefire;}
   &:hover   { color: @limesoda;}
   &:active  { color: @tart; }
+}
+
+.modal a.btn{
   &.btn:link,
-  &.btn:visited,
   &.btn:hover,
-  &.btn:active{ color: white; }
+  &.btn:active,
+  &.btn:visited { color: white; }
 }
 
 input { color: #676767; font-size: 95%; }

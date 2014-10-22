@@ -27,6 +27,16 @@ $(function(){
     $('.stations').removeClass('selected');
     $(this).addClass('selected');
   });
-
-
+  $('#start').click(function(){
+    socket.emit('station:start');
+  });
+  $('#stop').click(function(){
+    socket.emit('station:stop');
+  });
 });
+
+
+socket = io.connect();
+
+socket.emit('station:join',id);
+

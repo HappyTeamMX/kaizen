@@ -57,7 +57,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get('/simulation/detail/:sim_id', isLoggedIn, function(req, res) {
+  app.get('/simulation/detail/:sim_id'  , function(req, res) {
     var mongodb = req.db;
     var collection = mongodb.get('simulations');
     var sim_id = req.param("sim_id");
@@ -69,11 +69,10 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get('/simulation/load/:sim_id', isLoggedIn, function(req, res) {
+  app.get('/simulation/load/:sim_id', function(req, res) {
     var mongodb = req.db;
     var collection = mongodb.get('simulations');
     var sim_id = req.param("sim_id");
-    console.log(sim_id);
     collection.findOne({id:sim_id},function(e,docs){
       res.send(JSON.stringify(docs));
     });

@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var debug = require('debug');
 var flash    = require('connect-flash');
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
@@ -22,7 +21,9 @@ var mongoose = require('mongoose');
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 
-var app = express();
+var app = require('express.io')()
+app.http().io()
+
 
 require('./config/passport')(passport);
 
