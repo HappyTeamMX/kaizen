@@ -1,8 +1,9 @@
 $(function () {
-    // on load
+    
+
+
+
     $('.send-to').hide();
-
-
     // bindings
     $('body').on('click','.note',function(){
         $('.note').removeClass('selected');
@@ -35,3 +36,14 @@ $(function () {
 $(window).load(function(){
     $('#myModal').modal('show');
 });
+
+
+var sim_id = window.params.simulation;
+console.log(sim_id);
+io = io.connect();
+console.log(io);
+io.emit('join',sim_id);
+io.on('hello',function(){
+  alert('joined');
+});
+
