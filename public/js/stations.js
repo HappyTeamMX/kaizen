@@ -1,8 +1,10 @@
+// bigger offset = smaller id
+function get_id(offset){
+  return uuid.v4().substring(0,offset);
+}
+
+
 $(function () {
-    
-
-
-
     $('.send-to').hide();
     // bindings
     $('body').on('click','.note',function(){
@@ -30,20 +32,36 @@ $(function () {
       $('.note.started.selected').hide('swing');
       $('.note.started.selected').removeClass('selected');
     });
+
+    $('#new-order').click(function(){
+      var new_id = get_id(3);
+      $('#item-id').attr('value',new_id);
+      $('tbody').
+    });
     
 });
 
 $(window).load(function(){
-    $('#myModal').modal('show');
+    //$('#myModal').modal('show');
 });
 
 
 var sim_id = window.params.simulation;
 console.log(sim_id);
-io = io.connect();
-console.log(io);
-io.emit('join',sim_id);
-io.on('hello',function(){
-  alert('joined');
+socket = io.connect();
+
+socket.emit('station:join',sim_id);
+
+
+socket.on('begin',function(data){
+  $('#myModal').modal('hide');
+});
+
+socket.on('halt',function(data){
+  $('#myModal').modal('show');
+});
+
+socket.on('hello',function(data){
+  console.log('this is server');
 });
 

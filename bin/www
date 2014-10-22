@@ -1,9 +1,45 @@
 #!/usr/bin/env node
-var debug = require('debug')('kaizen');
 var app = require('../app');
 
-app.set('port', process.env.PORT || 80);
+
+      // ///////////////// //
+     // Broadcast Manager //
+    // ///////////////// //
+
+app.io.route('station', {
+    join: function(req) {
+        console.log('join event')
+        console.log(req.data)
+        req.io.join(req.data)
+    },
+    start: function(req){
+        console.log('unlock stations');
+        req.io.room(req.data).broadcast('begin');
+    },
+    stop: function(req){
+        console.log('lock stations');
+        req.io.room(req.data).broadcast('halt');
+    },
+    update: function(req) {
+        // update your customer
+        console.log(req.data.status)
+        req.io.room(req.data.room).broadcast('hello',{id:req.data})
+    },
+    send: function(req) {
+        // remove your customer
+    },
+});
+
+// 
+app.io.route('start', function(req) {
+    req.io.room(req.data).broadcast('begin');
+});
+
+
+
+
+app.set('port', 80);
 
 var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
+  console.log('Express server listening on port ' + server.address().port);
 });
