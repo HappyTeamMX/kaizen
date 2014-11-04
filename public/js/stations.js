@@ -32,6 +32,12 @@ $(function () {
       $('.note.started.selected').hide('swing');
       $('.note.started.selected').removeClass('selected');
     });
+
+
+    $('#new-order').click(function(){
+      var new_id = get_id(3);
+      $('#item-id').attr('value',new_id);
+    });
     
 });
 
