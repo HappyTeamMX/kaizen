@@ -17,15 +17,6 @@ block content
                 button.btn(type="button")
                   i.fa.fa-check
         .row
-          label Status:
-          .input-field {{ simulation.status.name }}
-          .flip
-            .input-group
-              select(ng:model="simulation.status", ng:options="status.name for status in simulation_status")
-              span.input-group-btn
-                button.btn(type="button")
-                  i.fa.fa-check
-        .row
           label Date:
           .input-field {{ simulation.date }}
           .flip

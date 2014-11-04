@@ -7,7 +7,7 @@ workstation.controller('Workstation', function ($scope, $http) {
     .then(function(result) {
       $scope.station_type = result.data;
   });
-    
+
   $http.get('/data/simulation_status')
     .then(function(result) {
       $scope.simulation_status = result.data;

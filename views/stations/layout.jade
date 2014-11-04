@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
-  head
-    title=title
+  head(ng-app="station")
+    title Kaizen Stations
     meta(name="viewport", content="width=device-width, initial-scale=1")
     // CDN CSS
     link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
@@ -10,7 +10,7 @@ html(lang="en")
     // Site CSS
     link(rel='stylesheet', href='/css/style.css')
     link(rel='stylesheet', href='/css/stations.css')
-  body
+  body(ng-controller="Stations")
     header
       nav(role="navigation").navbar.navbar-default
         .navbar-header
@@ -23,7 +23,6 @@ html(lang="en")
     .content
       block content
 
-      //a.btn.btn-primary(data-toggle='modal', href='#modal-id') Trigger modal
       #myModal.modal.fade(data-backdrop="static")
         .modal-dialog
           .modal-content
@@ -41,10 +40,11 @@ html(lang="en")
     script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js")
     script(src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js")
     script(src="/socket.io/socket.io.js")
-    // AngularJS dependencies
+    // AngularJS 
+    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js")
     script(src="/js/uuid.js")
     // Angular App
-      pass
+    script(src="/js/station_ctrl.js")
     // Site Script
     script(src="/js/script.js")
     script(src="/js/stations.js")
