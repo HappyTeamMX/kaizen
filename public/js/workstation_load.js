@@ -30,7 +30,7 @@ $(function(){
   $('#start').click(function(){
     socket.emit('station:start');
   });
-  $('#stop').click(function(){
+  $('#end').click(function(){
     socket.emit('station:stop');
   });
 });
@@ -40,3 +40,7 @@ socket = io.connect();
 
 socket.emit('station:join',id);
 
+
+socket.on('update',function(){
+
+});

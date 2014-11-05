@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .container
+    .row
+      .order.col-sm-6.col-sm-offset-2
+        .form-group
+            label(for='item-id') New Item Id
+            input.form-control#item-id(type='text', placeholder='Item id')
+        button.btn.btn-primary#new-order(ng-click="new_order()") Make an Order
+      .order-list.col-sm-4
+        table.table.table-hover
+            thead
+                tr
+                    th Order List
+            tbody
+                tr(ng:repeat="item for item in item_list")
+                    td {{ item }}
+
+

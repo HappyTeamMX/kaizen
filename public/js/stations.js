@@ -33,6 +33,7 @@ $(function () {
       $('.note.started.selected').removeClass('selected');
     });
 
+
     $('#new-order').click(function(){
       var new_id = get_id(3);
       $('#item-id').attr('value',new_id);
@@ -40,12 +41,14 @@ $(function () {
     
 });
 
+
 $(window).load(function(){
     //$('#myModal').modal('show');
 });
 
 
 var sim_id = window.params.simulation;
+
 console.log(sim_id);
 socket = io.connect();
 
@@ -54,6 +57,7 @@ socket.emit('station:join',sim_id);
 
 socket.on('begin',function(data){
   $('#myModal').modal('hide');
+  // 
 });
 
 socket.on('halt',function(data){
@@ -61,6 +65,7 @@ socket.on('halt',function(data){
 });
 
 socket.on('hello',function(data){
-  console.log('this is server');
+  alert('this is server with data ' + data);
 });
+
 
