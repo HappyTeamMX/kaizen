@@ -31,6 +31,7 @@ $(function(){
     socket.emit('station:start');
   });
   $('#end').click(function(){
+    console.log();
     socket.emit('station:stop');
   });
 });

@@ -1,20 +1,18 @@
 extends layout
 
 block content
-  .container
+  .container(ng:init="init()")
     .row
       .order.col-sm-6.col-sm-offset-2
         .form-group
-            label(for='item-id') New Item Id
-            input.form-control#item-id(type='text', placeholder='Item id')
-        button.btn.btn-primary#new-order(ng-click="new_order()") Make an Order
+            label(for='item-id') New Item
+            input.form-control#item-id(type='text', placeholder='Item id' disabled)
+        button.btn.btn-primary#new-order(ng:click="new_order()") Create order
       .order-list.col-sm-4
         table.table.table-hover
             thead
                 tr
                     th Order List
             tbody
-                tr(ng:repeat="item for item in item_list")
+                tr(ng:repeat="item in item_list")
                     td {{ item }}
-
-

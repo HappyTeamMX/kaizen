@@ -63,6 +63,6 @@ block content
                         .row Open Station as a {{ station.type.name }}
                       .modal-footer
                         button.btn.btn-warning(type='button', data-dismiss='modal') Cancel
-                        a.btn.btn-primary(href="/station/{{ station.type.station_uri }}?simulation=#{id}", type='button') Open
+                        a.btn.btn-primary(href="/station/{{ station.type.station_uri }}?simulation=#{id}&unit={{unit.id}}", type='button') Open
 block extended-scripts
   script(src="/js/workstation_load.js")

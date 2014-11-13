@@ -9,6 +9,12 @@ app.get('/simulation_status', function(req, res) {
   });
 });
 
+app.get('/stations/:sim_id', function(req, res){
+  var mongodb = req.db;
+  var collection = mongodb.get('simulations');
+  var sim_id = req.param("sim_id");
+});
+
 app.get('/station_types', function(req, res) {
   var mongodb = req.db;
   var collection = mongodb.get('station_types');
