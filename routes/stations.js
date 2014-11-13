@@ -22,6 +22,11 @@ app.get('/final', function(req, res) {
   res.render('stations/exceltable', { title: 'Kaizen' });
 });
 
+// Quality simulation template
+app.get('/quality', function(req, res) {
+  res.render('stations/station_quality', { title: 'Kaizen' });
+});
+
 // Generic
 //app.get('quality', function(req, res) {
 //  res.render('stations/station_qa', { title: 'Kaizen' });
