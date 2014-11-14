@@ -33,12 +33,12 @@ $(function () {
       $('.note.started.selected').removeClass('selected');
     });
 
-    
+
 });
 
 
 $(window).load(function(){
-    //$('#myModal').modal('show');
+    $('#myModal').modal('show');
 });
 
 
@@ -52,7 +52,7 @@ socket.emit('station:join',sim_id);
 
 socket.on('begin',function(data){
   $('#myModal').modal('hide');
-  // 
+  console.log(data);
 });
 
 socket.on('halt',function(data){
@@ -60,7 +60,7 @@ socket.on('halt',function(data){
 });
 
 socket.on('hello',function(data){
-  alert('this is server with data ' + data);
+  console.log('this is server with data ' + data.id);
 });
 
 

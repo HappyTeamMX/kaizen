@@ -8,8 +8,9 @@ var app = require('../app');
 
 app.io.route('station', {
     join: function(req) {
-        console.log('join event')
-        req.io.join(req.data)
+        console.log('join event');
+        console.log(req.data);
+        req.io.join(req.data);
     },
     start: function(req){
         console.log('unlock stations');
@@ -23,15 +24,15 @@ app.io.route('station', {
     },
     update: function(req) {
         // update your customer
-        console.log(req.data.status)
-        req.io.room(req.data.room).broadcast('hello',{id:req.data})
+        console.log(req.data.status);
+        req.io.room(req.data.room).broadcast('hello',{id:req.data});
     },
     send: function(req) {
         // remove your customer
     },
 });
 
-// 
+//
 app.io.route('start', function(req) {
     req.io.room(req.data).broadcast('begin');
 });

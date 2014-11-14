@@ -14,7 +14,7 @@ workstation.controller('Workstation', function ($scope, $http) {
     .then(function(result) {
       $scope.simulation = result.data;
   });
-    
+
 });
 
 // JQuery and UI Functions for WorkstationLoader
@@ -28,11 +28,11 @@ $(function(){
     $(this).addClass('selected');
   });
   $('#start').click(function(){
-    socket.emit('station:start');
+    socket.emit('station:start', id);
   });
   $('#end').click(function(){
     console.log();
-    socket.emit('station:stop');
+    socket.emit('station:stop', id);
   });
 });
 
