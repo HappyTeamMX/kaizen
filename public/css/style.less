@@ -1,90 +1,38 @@
-@import url("http://fonts.googleapis.com/css?family=Roboto:400,300");
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-
-// variables
-
-@coal:#393939;
-@lavanderblue:#5849CC;
-@limesoda:#9EBF30;
-@tart:#FFC200;
-@flamefire:#F51100;
-@vr:60px;
-
-// General
-body, html { margin: 0; padding: 0; color: @coal; font-size: 16px; line-height: 1.618em; font-family: "Roboto" }
-label { display: inline-block; width: 100px; margin-right: 15px; }
-footer{ position: fixed; bottom: 0; height: @vr/2; width: 100%; background-color: @coal; }
-.content{ padding-bottom: @vr; }
-// class
-.headline { font-size: 2.618em; }
-.subhead  { font-size: 1.618em; }
-.bodycopy { font-size: 1em;     }
-.byline   { font-size: 0.618em; }
-
-.right{ float: right; }
-.left { float: left; }
-
-.k-done    { background-color: @lavanderblue; }
-.k-success { background-color: @limesoda; }
-.k-warning { background-color: @tart; }
-.k-error   { background-color: @flamefire; }
-
-a {
-  text-decoration: none;
-  &:link    { color: @lavanderblue; }
-  &:visited { color: @flamefire;}
-  &:hover   { color: @limesoda;}
-  &:active  { color: @tart; }
+@import "general.less";
+// login
+button.login {
+  width: 100%;
 }
-
-.modal a.btn{
-  &.btn:link,
-  &.btn:hover,
-  &.btn:active,
-  &.btn:visited { color: white; }
-}
-
-input { color: #676767; font-size: 95%; }
-
-// Overwrites
-//- no rounded plz
-div, button, .btn, nav { border-radius: 0 !important; }
-i.fa{ margin: 0 6px; }
-
-
-span.user{
+span.user {
   display: inline-block;
   padding: 11px;
 }
-
-.alert{
-  & a{
-    margin-left: @vr / 4;
-  }
-}
-
-// Site Styles
-
-// login
-button.login { width: 100%; }
-
 // home
-.actions { padding-top: @vr/4;}
-ul.list{
+.actions {
+  padding-top: @vr/4;
+}
+ul.list {
   list-style: none;
-  & li{
+  & li {
     margin: @vr/6 0;
     cursor: pointer;
   }
 }
-
-.status{
-  &.Done    { color: @limesoda; }
-  &.Pending { color: @tart; }
-  &.Canceled{ color: @flamefire; }
-  &.Active  { color: @lavanderblue; }
+.status {
+  &.Done {
+    color: @done;
+  }
+  &.Pending {
+    color: @warning;
+  }
+  &.Canceled {
+    color: @error;
+  }
+  &.Active {
+    color: @active;
+  }
 }
-
-
-
+.navbar-brand {
+  padding: 0 15px;
+}
 

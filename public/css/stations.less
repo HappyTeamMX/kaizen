@@ -1,23 +1,9 @@
-
-@import url("http://fonts.googleapis.com/css?family=Roboto:400,300");
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-
+@import "general.less";
 // variables
-
-@coal:#393939;
-@lavanderblue:#5849CC;
-@limesoda:#9EBF30;
-@tart:#FFC200;
-@flamefire:#F51100;
-@vr:60px;
-
-.no-select{-webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
-
-.tickets{
+.tickets {
   margin-bottom: @vr;
   height: 100px;
 }
-
 .note {
   .no-select;
   display: inline-block;
@@ -28,7 +14,7 @@
   height: 80px;
   font-family: 'Roboto';
   color: @coal;
-  box-shadow: 0 5px 5px 2px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 5px 2px rgba(0, 0, 0, 0.3);
   background: #EAE672;
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -36,31 +22,28 @@
   -ms-transform: rotate(2deg);
   transform: rotate(2deg);
   cursor: pointer;
-
-  &.started{
-    background: @tart;
+  &.started {
+    background: @warning;
   }
-  &.selected{
-    background: @limesoda;
+  &.selected {
+    background: @active;
   }
-  &.started.selected{
-    background: @lavanderblue;
+  &.started.selected {
+    background: @done;
     color: white;
   }
 }
-
-.timer{
+.timer {
   .no-select;
   font-size: 3em;
   text-align: center;
   font-weight: 300;
   line-height: 3.1em;
 }
-
-.controls{
+.controls {
   text-align: center;
   margin-top: @vr / 2;
-  .btn{
+  .btn {
     margin: 0 15px;
   }
 }

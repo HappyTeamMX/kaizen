@@ -1,29 +1,52 @@
-html
+doctype html
+html(lang="en")
   head
-    title Node Authentication
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
-    //
-       load bootstrap css 
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
-    //
-       load fontawesome 
-    style
-      body 		{ padding-top:80px; }
+    title=title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
+    link(rel='stylesheet', href='/css/style.css')
   body
-    .container
-      .col-sm-6.col-sm-offset-3
-        h1
-          span.fa.fa-sign-in
-          | Login
-        //
-           show any messages that come back with authentication 
-        //
-           LOGIN FORM 
-        form(action='/login', method='post')
-          .form-group
-            label Email
-            input.form-control(type='text', name='email')
-          .form-group
-            label Password
-            input.form-control(type='password', name='password')
-          button.btn.btn-warning.btn-lg(type='submit') Login
+    header
+      nav(role="navigation").navbar.navbar-default
+        .navbar-header
+          button(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href="/home").navbar-brand
+            img(src="/img/logo-alpha-nav.png" height=50)
+    .content
+      .container
+        .col-sm-6.col-sm-offset-3
+          h1 Kaizen Login
+          form(action='/login', method='post')
+            .form-group
+              .input-group
+                label.sr-only Username
+                .input-group-addon
+                  i.fa.fa-user
+                input.form-control(type='text', name='email')
+            .form-group
+              .input-group
+                label.sr-only Password
+                .input-group-addon
+                  i.fa.fa-key
+                input.form-control(type='password', name='password')
+            button.btn.btn-big.login.iisblue.subhead(type='submit')
+              i.fa.fa-sign-in
+              span Login
+    footer
+      .row
+        .logos.col-sm-4
+          img(src="/img/tec-logo.png")
+          img(src="/img/iis-small.png")
+        span.col-sm-4 Kaizen |
+          script(type="text/javascript").
+            document.write(' ' + new Date().getFullYear())
+
+
+    // CDN JS
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    // end site code

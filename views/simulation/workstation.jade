@@ -19,8 +19,8 @@ block content
             .input-group
               input.form-control(ng:value="'{{ simulation.name }}'", ng:model="simulation.name")
               span.input-group-btn
-                button.btn(type="button")
-                  i.fa.fa-check        
+                button.btn.btn-small(type="button")
+                  i.fa.fa-check
         .row
           label Status:
           .input-field {{ simulation.status.name }}
@@ -28,7 +28,7 @@ block content
             .input-group
               select(ng:model="simulation.status", ng:options="status.name for status in simulation_status")
               span.input-group-btn
-                button.btn(type="button")
+                button.btn.btn-small(type="button")
                   i.fa.fa-check
         .row
           label Date:
@@ -37,7 +37,7 @@ block content
             .input-group
               input.datepicker.form-control(ng:value="'{{ simulation.date }}'", ng:model="simulation.date")
               span.input-group-btn
-                button.btn(type="button")
+                button.btn.btn-small(type="button")
                   i.fa.fa-check
         .row
           label Takt time:
@@ -46,7 +46,7 @@ block content
             .input-group
               input.form-control.timepicker(ng:value="'{{ simulation.takt_time }}'", ng:model="simulation.takt_time")
               span.input-group-btn
-                button.btn(type="button")
+                button.btn.btn-small(type="button")
                   i.fa.fa-check
 
     .well.col-sm-12
@@ -114,8 +114,8 @@ block content
                                 button.btn(type="button")
                                   i.fa.fa-check
                       .modal-footer
-                        button.btn.btn-default(type='button', data-dismiss='modal') Done
-        button.btn.right(ng:click="save()") Save Simulation
+                        button.btn.btn-big.active(type='button', data-dismiss='modal') Done
+        button.btn.btn-big.active.right(ng:click="save()") Save Simulation
 
 block extended-scripts
   script(src="/js/workstation.js")

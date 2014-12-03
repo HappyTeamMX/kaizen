@@ -9,23 +9,23 @@ var app = require('../app');
 app.io.route('station', {
     join: function(req) {
         console.log('join event');
-        console.log(req.data);
-        req.io.join(req.data);
+        console.log(req.data.room);
+        req.io.join(req.data.room);
     },
     start: function(req){
         console.log('unlock stations');
-        req.io.room(req.data).broadcast('begin',{name:"hola"});
-        req.io.room(req.data).broadcast('hello');
+        req.io.room(req.data.room).broadcast('begin');
+        req.io.room(req.data.room).broadcast('hello');
 
     },
     stop: function(req){
-        console.log('lock stations' + req);
-        req.io.room(req.data).broadcast('halt');
+        console.log('lock stations ' + req.data.name);
+        req.io.room(req.data.room).broadcast('halt');
     },
     update: function(req) {
         // update your customer
         console.log(req.data.status);
-        req.io.room(req.data.room).broadcast('hello',{id:req.data});
+        req.io.room(req.data).broadcast('hello',{id:req.data});
     },
     send: function(req) {
         // remove your customer

@@ -1,47 +1,45 @@
-var id = $('#simulation').attr('data_id');
+var sim_id = $('#simulation').attr('data_id');
 
-var workstation = angular.module('workstation',[]);
+var workstation = angular.module('workstation', []);
 
-workstation.controller('Workstation', function ($scope, $http) {
-  // get data ajax
+workstation.controller('Workstation', function($scope, $http) {
 
-  $http.get('/data/station_types')
-    .then(function(result) {
-      $scope.station_type = result.data;
-  });
+    $http.get('/data/station_types')
+        .then(function(result) {
+            $scope.station_type = result.data;
+        });
 
-  $http.get('/simulation/load/'+id)
-    .then(function(result) {
-      $scope.simulation = result.data;
-  });
-
+    $http.get('/simulation/load/' + sim_id)
+        .then(function(result) {
+            $scope.simulation = result.data;
+        });
 });
 
 // JQuery and UI Functions for WorkstationLoader
 
-
 // UI functions
-$(function(){
-  // AJS faster than light so we bind to the parent
-  $('.container').on('click','.stations',function(){
-    $('.stations').removeClass('selected');
-    $(this).addClass('selected');
-  });
-  $('#start').click(function(){
-    socket.emit('station:start', id);
-  });
-  $('#end').click(function(){
-    console.log();
-    socket.emit('station:stop', id);
-  });
+$(function() {
+    // AJS faster than light so we bind to the parent
+    $('.container').on('click', '.stations', function() {
+        $('.stations').removeClass('selected');
+        $(this).addClass('selected');
+    });
+    $('#start').click(function() {
+        socket.emit('station:start', {room:sim_id});
+    });
+    $('#end').click(function() {
+        socket.emit('station:stop', {
+            room: sim_id,
+            name: 'this is Sparta'
+        });
+    });
 });
 
 
 socket = io.connect();
 
-socket.emit('station:join',id);
+socket.emit('station:join', {room:sim_id});
 
-
-socket.on('update',function(){
+socket.on('update', function() {
 
 });

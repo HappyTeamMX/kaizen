@@ -3,6 +3,8 @@ html(lang="en")
   head
     title=title
     meta(name="viewport", content="width=device-width, initial-scale=1")
+    // Normalize
+    link(rel='stylesheet', href='/css/normalize.css')
     // CDN CSS
     link(href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel="stylesheet")
     link(href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css", rel="stylesheet")
@@ -17,7 +19,8 @@ html(lang="en")
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a(href="/home").navbar-brand=title
+          a(href="/home").navbar-brand
+            img(src="/img/logo-alpha-nav.png" height=50)=title
         .collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.navbar-nav.navbar-right
             li
@@ -28,6 +31,13 @@ html(lang="en")
     .content
       block content
     footer
+      .row
+        .logos.col-sm-4
+          img(src="/img/tec-logo.png")
+          img(src="/img/iis-small.png")
+        span.col-sm-4 Kaizen |
+          script(type="text/javascript").
+            document.write(' ' + new Date().getFullYear())
 
     // CDN JS
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")

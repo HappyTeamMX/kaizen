@@ -1,0 +1,145 @@
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+// status color codes
+@coal: #393939;
+@done: #5849CC;
+@active: #9EBF30;
+@warning: #FFC200;
+@error: #F51100;
+// brand color codes
+@iisblue: #00558C;
+@black60: #999999;
+@black40: #666666;
+@white: #F1F1F1;
+@vr: 60px;
+
+// General
+body, html {
+  margin: 0;
+  padding: 0;
+  color: @coal;
+  background: @white;
+  font-size: 16px;
+  line-height: 1.618em;
+  font-family: "Roboto"
+}
+header .navbar{
+  background: white;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  height: @vr;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  line-height: @vr;
+  color: @iisblue;
+  img{
+    max-height: 50px;
+  }
+}
+.content {padding-bottom: @vr; }
+button, .btn, div, .well, .navbar {border-radius: 0; }
+
+.done {     background: @done; color: @white; }
+.active {   background: @active; color: @coal; }
+.warning {  background: @warning; color: @coal; }
+.error {    background: @error; color: @white; }
+.iisblue {  background: @iisblue; color: @white; }
+.white {    background: white; color: @coal;}
+// class
+.headline { font-size: 2.618em; }
+.subhead {  font-size: 1.618em; }
+.bodycopy { font-size: 1em; }
+.byline {   font-size: 0.618em; }
+.right {    float: right; }
+.left {     float: left; }
+
+.k-done {   background-color: @done; }
+.k-success{ background-color: @active; }
+.k-warning{ background-color: @warning; }
+.k-error {  background-color: @error; }
+
+.fa{ margin: 0 10px; }
+
+h1 {font-size: 2.6180em; }
+h2 {font-size: 2.6180em; text-decoration: underline; }
+h3 {font-size: 1.6180em; font-weight: bold; }
+h4 {font-size: 1.6180em; font-style: italic; color: @black40;}
+h5 {font-size: 0.6180em; }
+h6 {font-size: 0.6180em; color: gray;}
+
+label {display: inline-block; width: 100px; margin-right: 15px; }
+
+a {
+  text-decoration: none;
+  &:link {color: @done; }
+  &:visited {color: @error; }
+  &:hover {color: @active; }
+  &:active {color: @warning; }
+}
+.modal a.btn {
+  &.btn:link, &.btn:hover, &.btn:active, &.btn:visited {
+    color: white;
+  }
+}
+input {
+  color: #676767;
+  font-size: 95%;
+}
+.alert {
+  & a {margin-left: @vr / 4; }
+}
+.no-select {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.pointer {cursor: pointer; }
+
+
+button, .btn{
+  border: none;
+  &.done  {
+    &:link, &:visited ,&:hover ,&:active {
+      color:@white;
+    }
+  }
+  &.active  {
+    &:link, &:visited ,&:hover ,&:active {
+      color:@coal;
+    }
+  }
+  &.warning  {
+    &:link, &:visited ,&:hover ,&:active {
+      color:@coal;
+    }
+  }
+  &.error  {
+    &:link, &:visited ,&:hover ,&:active {
+      color:@white;
+    }
+  }
+  &.iisblue  {
+    &:link, &:visited ,&:hover ,&:active {
+      color:@white;
+    }
+  }
+  &.white  {
+    border: black solid 1px;
+    &:link, &:visited ,&:hover ,&:active {
+      color:@coal;
+    }
+  }
+  &.btn-big{
+    padding: @vr/3;
+    margin: @vr/4;
+    &:hover{
+      position: relative;
+      top: 3px;
+    }
+  }
+}
