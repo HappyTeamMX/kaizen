@@ -1,6 +1,8 @@
 var sim_id = window.params.simulation;
 var station_id = window.params.unit;
-
+var x = 0;
+var y = 0;
+var myVar = setInterval(function () {errortwo ()},1000);  
 
 // bigger offset = smaller id
 function get_id(offset) {
@@ -45,8 +47,25 @@ $(window).load(function() {
     $('#myModal').modal('show');
 });
 
+function takerror(){
+    x++;
+    console.log(x);
+    if(x==15){
+        x = 0;
+        $('#myModal').modal('show');
+        myVar;           
+    }    
+};
 
-
+function errortwo(){
+    y++;
+    console.log(y);
+    if(y==4){
+        y=0;
+        $('#myModal').modal('hide');
+        clearInterval(myVar);
+    }
+}
 
 
 socket = io.connect();
@@ -56,6 +75,7 @@ socket.emit('station:join', {room:sim_id});
 
 socket.on('begin', function(data) {
     $('#myModal').modal('hide');
+    setInterval(function () {takerror ()},1000);
 });
 
 socket.on('halt', function(data) {
