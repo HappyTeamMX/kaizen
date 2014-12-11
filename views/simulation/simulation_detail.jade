@@ -36,7 +36,7 @@ block content
                   i.fa.fa-check
     .flags.right
       button.btn.btn-success#start
-        i.fa.fa-play 
+        i.fa.fa-play
         span Start Simulation
       button.btn.btn-warning#end
         i.fa.fa-stop
@@ -49,9 +49,9 @@ block content
             span.station-name.input-field {{ station.type.name }}
             .units
               .workstation(ng:repeat="unit in station.units")
-                span(data-toggle='modal', data-target='.modal-{{unit.id}}')
+                span(data-toggle='modal', data-target='#modal-{{unit.id}}')
                   i.fa.fa-gears
-                .modal.fade(class="modal-{{ unit.id }}",tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                .modal.fade(id="modal-{{ unit.id }}",tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
                   .modal-dialog
                     .modal-content
                       .modal-header
@@ -63,6 +63,11 @@ block content
                         .row Open Station as a {{ station.type.name }}
                       .modal-footer
                         button.btn.btn-warning(type='button', data-dismiss='modal') Cancel
-                        a.btn.btn-primary(href="/station/{{ station.type.station_uri }}?simulation=#{id}&unit={{unit.id}}", type='button') Open
+                        a.btn.btn-primary(
+                          href="/station/{{ station.type.station_uri }}?simulation=#{id}&unit={{unit.id}}",
+                          target="_blank",
+                          type='button',
+                          id="b{{unit.id}}",
+                        ) Open
 block extended-scripts
   script(src="/js/workstation_load.js")

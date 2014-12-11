@@ -19,7 +19,7 @@ html(lang="en", ng-app="station")
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          .navbar-brand=title
+          .navbar-brand=Kaizen
     .content
       block content
 
@@ -31,6 +31,13 @@ html(lang="en", ng-app="station")
             .modal-body
               p Waiting for Simulation to start ...
     footer
+      .row
+        .logos.col-sm-4
+          img(src="/img/tec-logo.png")
+          img(src="/img/iis-small.png")
+        span.col-sm-4 Kaizen |
+          script(type="text/javascript").
+            document.write(' ' + new Date().getFullYear())
 
     // CDN JS
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")

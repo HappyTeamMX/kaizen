@@ -1,4 +1,4 @@
-@import "general.less";
+@import "style.less";
 // new sim
 .layout {
   background: white;
@@ -93,4 +93,39 @@
   input {
     float: right;
   }
+}
+.DTTT_container {
+  display: block;
+  height: @vr;
+  a.DTTT_button {
+    .done;
+    .btn;
+    .btn-animated;
+  }
+}
+a.paginate_button {
+  .btn;
+  .btn-animated;
+  .white;
+  &.next {
+    &::after {
+      content: ' >>';
+    }
+  }
+  &.previous {
+    &::before {
+      content: '<< ';
+    }
+  }
+  &.current {
+    .btn;
+  }
+}
+
+.ready{
+  border: 2px solid #F51100;
+  background: #9EBF30;
+  padding: 4px;
+  width: 50px;
+  height: 50px;
 }

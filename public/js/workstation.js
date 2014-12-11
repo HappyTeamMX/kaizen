@@ -16,8 +16,7 @@ workstation.controller('Workstation', function($scope, $http) {
   $scope.simulation = {
     id: get_id(7),
     name: 'New Simulation',
-    date: moment()
-      .format('DD/MM/YYYY'),
+    date: moment().format('DD/MM/YYYY'),
     takt_time: '03:00',
     status: {
       name: 'Select status...'
@@ -35,8 +34,8 @@ workstation.controller('Workstation', function($scope, $http) {
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }]
-        }, {
+      }]
+    }, {
       id: get_id(8),
       type: {
         "id": 201,
@@ -49,20 +48,20 @@ workstation.controller('Workstation', function($scope, $http) {
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }, {
+      }, {
         id: get_id(4),
         name: 'Warehouse 2',
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }, {
+      }, {
         id: get_id(4),
         name: 'Warehouse 3',
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }]
-        }, {
+      }]
+    }, {
       id: get_id(8),
       type: {
         "id": 203,
@@ -75,20 +74,20 @@ workstation.controller('Workstation', function($scope, $http) {
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }, {
+      }, {
         id: get_id(4),
         name: 'Workstation 2',
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }, {
+      }, {
         id: get_id(4),
         name: 'Workstation 3',
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }]
-        }, {
+      }]
+    }, {
       id: get_id(8),
       type: {
         "id": 202,
@@ -101,20 +100,20 @@ workstation.controller('Workstation', function($scope, $http) {
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }, {
+      }, {
         id: get_id(4),
         name: 'Start Station 2',
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }, {
+      }, {
         id: get_id(4),
         name: 'Start Station 3',
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }]
-        }, {
+      }]
+    }, {
       id: get_id(8),
       type: {
         "id": 204,
@@ -127,8 +126,8 @@ workstation.controller('Workstation', function($scope, $http) {
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }]
-        }, {
+      }]
+    }, {
       id: get_id(8),
       type: {
         "id": 205,
@@ -141,10 +140,9 @@ workstation.controller('Workstation', function($scope, $http) {
         std_dev: '00:00',
         err_interval: '00:00',
         err_duration: '00:30'
-            }]
-        }]
+      }]
+    }]
   };
-
 
   $scope.save = function() {
     console.log(this.simulation);
@@ -158,13 +156,12 @@ workstation.controller('Workstation', function($scope, $http) {
       });
   }
 
-
   $scope.control_action = function(action, target) {
       // Remove Column
       if (target === "column" && action === "remove") {
         var column_id = $('.stations.selected')
           .attr('data-id');
-        window.dudes.forEach(function(dude) {
+        $scope.simulation.stations.forEach(function(dude) {
           if (dude.id === column_id) {
             var i = $scope.simulation.stations.indexOf(dude);
             $scope.simulation.stations.splice(i, 1);
@@ -189,7 +186,6 @@ workstation.controller('Workstation', function($scope, $http) {
           }]
         });
       }
-
 
       // Remove station
       // - wipe out the station. adieu
@@ -224,7 +220,6 @@ workstation.controller('Workstation', function($scope, $http) {
       }
 
     } // end event
-
 
 });
 
@@ -286,7 +281,6 @@ $(function() {
         .parent()
         .slideToggle();
     });
-
 
 });
 

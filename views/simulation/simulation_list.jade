@@ -3,6 +3,10 @@ extends layout
 block content
   .container
     h1.title Simulation List
+    div
+      a(href="/home")
+        i.fa.fa-arrow-left
+        span Back home
     .well.col-sm-10.col-sm-offset-1
       .table-responsive
         table.dataTable.table.table-hover
@@ -16,12 +20,12 @@ block content
               tr
                 td #{ item.name }
                 td #{ item.date }
-                td 
-                  i.status(class="#{ item.status.name }") 
+                td
+                  i.status(class="#{ item.status.name }")
                   span #{ item.status.name }
-                td 
-                  a(href="/simulation/detail/#{ item.id }") Diagram
-                  span   |   
+                td
+                  a(href="/simulation/#{ item.id }") Diagram
+                  span   |
                   a(href="#") Data
 
 block extended-scripts

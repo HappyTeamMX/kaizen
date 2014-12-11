@@ -2,18 +2,11 @@ extends layout
 
 block content
   .container
+    h1 {{station_data.name}}
     .row
       ul.tickets
-          li.note.selected(data-id="")
-            span 52b7
-          li.note(data-id="")
-            span od29
-          li.note(data-id="")
-            span 056w
-          li.note(data-id="")
-            span 056w
-          li.note(data-id="")
-            span 20p4
+        li.note(ng-repeat="order in item_list", data-id="{{ order.item }}").
+          {{ order.item }}
     .row
       .timer.col-sm-4.col-sm-offset-4
     .row

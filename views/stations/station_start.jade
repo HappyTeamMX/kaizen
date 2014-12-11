@@ -2,26 +2,22 @@ extends layout
 
 block content
   .container
+    h1 {{station_data.name}}
     .row
       ul.tickets
-    .row
-      .timer.col-sm-4.col-sm-offset-4
+        li.note(ng-repeat="order in item_list", data-id="{{ order.item }}").
+          {{ order.item }}
     .row
       .controls
         .form
           .form-group#start
             label Item ID
-            input(type="text")
+            input(type="text", ng-model="new_item.item", ng-value="new_item.item")
             button.btn.btn-info Start
           .form-group.send-to
             label Send To
-            select
-              option Warehouse
-              option Station A
-              option Station B
-              option Station C
-              option QA 1
-            button.btn(type="button")
-                  i.fa.fa-check
+            select(ng-model="new_item.target", ng-options="unit.name for unit in station_data.all_stations")
+            button.btn.btn-animated.active(type="button", ng-click="new_order('start')")
+              i.fa.fa-check
           .form-group#end
             button.btn.btn-info End
