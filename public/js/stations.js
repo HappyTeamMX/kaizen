@@ -1,8 +1,7 @@
 var sim_id = window.params.simulation;
 var station_id = window.params.unit;
 var x = 0;
-var y = 0;
-var myVar = setInterval(function () {errortwo ()},1000);  
+var y = 0;  
 
 // bigger offset = smaller id
 function get_id(offset) {
@@ -50,17 +49,17 @@ $(window).load(function() {
 function takerror(){
     x++;
     console.log(x);
-    if(x==15){
+    if(x==120){
         x = 0;
         $('#myModal').modal('show');
-        myVar;           
+        var myVar = setInterval(function () {errortwo ()},1000);           
     }    
 };
 
 function errortwo(){
     y++;
     console.log(y);
-    if(y==4){
+    if(y==10){
         y=0;
         $('#myModal').modal('hide');
         clearInterval(myVar);
