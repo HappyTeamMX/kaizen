@@ -13,6 +13,12 @@ window.params = function() {
   }
 }();
 
+function m2s (s) {
+  var t = s.split(':');
+  return (parseInt(t[0])*60) + parseInt(t[1])
+}
+
+
 $(function() {
 
   $('.pop').popover({

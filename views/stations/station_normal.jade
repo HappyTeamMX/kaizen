@@ -16,14 +16,10 @@ block content
             button.btn.btn-info Start
           .form-group.send-to
             label Send To
-            select
-              option Warehouse
-              option Station A
-              option Station B
-              option Station C
-              option QA 1
-            button.btn(type="button")
-                  i.fa.fa-check
+            select(ng-model="new_item.target", ng-options="unit.name for unit in station_data.all_stations")
+            button.btn.btn-animated.active(type="button", ng-click="send_order('pass')")
+              i.fa.fa-check
+              span Send
           .form-group#end
-            button.btn.btn-info End
+            button.btn.btn-info(type="button", ng-click="send_order('end')") End
 

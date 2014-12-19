@@ -29,8 +29,8 @@ module.exports = function(app, passport) {
   });
 
   app.get('/home', isLoggedIn, function(req, res) {
-    var mongodb = req.db;
-    var collection = mongodb.get('simulations');
+    var monk = req.db;
+    var collection = monk.get('simulations');
     collection.find({}, {
       limit: 5
     }, function(e, docs) {
@@ -53,9 +53,12 @@ module.exports = function(app, passport) {
   });
 
   app.get('/simulation/list', isLoggedIn, function(req, res) {
-    var mongodb = req.db;
-    var collection = mongodb.get('simulations');
-    collection.find({}, function(e, docs) {
+    var monk = req.db;
+    var collection = monk.get('simulations');
+    collection.find({}, function(err, docs) {
+      if (err) {
+        res.send({status:500,message:'Database Error'});
+      };
       res.render('simulation/simulation_list', {
         title: 'Kaizen',
         'simulations': docs,
@@ -64,12 +67,13 @@ module.exports = function(app, passport) {
   });
 
   app.get('/simulation/:sim_id/edit', function(req, res) {
-    var mongodb = req.db;
-    var collection = mongodb.get('simulations');
+    var monk = req.db;
+    var collection = monk.get('simulations');
     var sim_id = req.param("sim_id");
-    collection.findOne({
-      id: sim_id
-    }, function(e, docs) {
+    collection.findOne({id: sim_id }, function(err, docs) {
+      if (err) {
+        res.send({status:500,message:'Database Error'});
+      };
       res.render('simulation/workstation_edit', {
         title: 'Kaizen',
         id: sim_id
@@ -78,12 +82,13 @@ module.exports = function(app, passport) {
   });
 
   app.get('/simulation/:sim_id', function(req, res) {
-    var mongodb = req.db;
-    var collection = mongodb.get('simulations');
+    var monk = req.db;
+    var collection = monk.get('simulations');
     var sim_id = req.param("sim_id");
-    collection.findOne({
-      id: sim_id
-    }, function(e, docs) {
+    collection.findOne({id: sim_id }, function(err, docs) {
+      if (err) {
+        res.send({status:500,message:'Database Error'});
+      };
       res.render('simulation/simulation_detail', {
         title: 'Kaizen',
         id: sim_id
@@ -92,23 +97,24 @@ module.exports = function(app, passport) {
   });
 
   app.get('/simulation/load/:sim_id', function(req, res) {
-    var mongodb = req.db;
-    var collection = mongodb.get('simulations');
+    var monk = req.db;
+    var collection = monk.get('simulations');
     var sim_id = req.param("sim_id");
-    collection.findOne({
-      id: sim_id
-    }, function(e, docs) {
+    collection.findOne({id: sim_id }, function(err, docs) {
+      if (err) {
+        res.send({status:500,message:'Database Error'});
+      };
       res.send(JSON.stringify(docs));
     });
   });
 
   // Save simulation manager
   app.post('/simulation/save', isLoggedIn, function(req, res) {
-    var db = req.db;
-    var collection = db.get('simulations');
+    var monk = req.db;
+    var collection = monk.get('simulations');
     collection.insert(new_sim, function(err, doc) {
       if (err) {
-        res.send("There was a problem adding the information to the database. ");
+        res.send({status:500,message:'Database Error'});
       } else {
         res.send(true);
       }
@@ -118,14 +124,14 @@ module.exports = function(app, passport) {
   // update manager
   app.post('/simulation/update/:sim_id', isLoggedIn, function(req, res) {
     var sim_id = req.param("sim_id");
-    var db = req.db;
-    var collection = db.get('simulations');
+    var monk = req.db;
+    var collection = monk.get('simulations');
     var new_sim = req.body.sim;
     console.log(sim_id);
     collection.update(new_sim, function(err, doc) {
       if (err) {
         console.log(err);
-        res.send("There was a problem adding the information to the database. ");
+        res.send({status:500,message:'Database Error'});
       } else {
         console.log('saved');
         res.send(true);

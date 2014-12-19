@@ -24,17 +24,19 @@ app.get('/station_data/:sim_id/:station_id', function(req, res) {
     id: sim_id
   }, function(e, docs) {
     var sim = docs;
-    console.log(sim);
     var station_data = {
       id: station_id,
       simulation: docs.id,
       all_stations: []
     }
+    console.log(docs);
     docs.stations.forEach(function(type) {
       type.units.forEach(function(unit) {
         if (unit.id === station_id) {
+          console.log(unit);
           station_data.name = unit.name;
-
+          station_data.interval = unit.err_interval;
+          station_data.duration = unit.err_duration;
         }else{
           station_data.all_stations.push({
             id: unit.id,

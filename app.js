@@ -22,7 +22,7 @@ var mongoose = require('mongoose');
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 
-var app = require('express.io')()
+var app = require('express.io')();
 app.http().io()
 
 require('./config/passport')(passport);
@@ -55,6 +55,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // make db accesible to routes
 app.use(function(req, res, next) {
   req.db = db;
+  global.gmonk = db;
   next();
 });
 
