@@ -29,6 +29,12 @@ station.controller('Stations', function($scope, $http) {
       $scope.station_data = data.data;
     });
 
+  $http.get('/data/simulation_times/' + sim_id)
+    .then(function(data) {
+      console.log(data);
+      $scope.all_times = data.data;
+    });
+
   $scope.item_list = [];
 
   $scope.new_item = {
@@ -75,11 +81,12 @@ station.controller('Stations', function($scope, $http) {
     } else if (event === 'pass') {
       var note = $('.selected');
       if (note.length === 0) {
-        console.log('no note selected');
+        console.log('No note selected');
         return;
       } else {
         $scope.new_item.start_time = moment().format('HH:mm:ss a');
         $scope.new_item.item = note.attr('data-id');
+        $scope.new_item.id = note.attr('data-secret');
         $scope.send_and_reset(event);
       }
     } else {
@@ -110,6 +117,5 @@ socket.on('delivery', function(message) {
     angular.element('.container').scope().item_list.push(message);
     angular.element('.container').scope().$apply();
   }
-
 });
 

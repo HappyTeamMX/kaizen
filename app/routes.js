@@ -57,7 +57,10 @@ module.exports = function(app, passport) {
     var collection = monk.get('simulations');
     collection.find({}, function(err, docs) {
       if (err) {
-        res.send({status:500,message:'Database Error'});
+        res.send({
+          status: 500,
+          message: 'Database Error'
+        });
       };
       res.render('simulation/simulation_list', {
         title: 'Kaizen',
@@ -70,9 +73,14 @@ module.exports = function(app, passport) {
     var monk = req.db;
     var collection = monk.get('simulations');
     var sim_id = req.param("sim_id");
-    collection.findOne({id: sim_id }, function(err, docs) {
+    collection.findOne({
+      id: sim_id
+    }, function(err, docs) {
       if (err) {
-        res.send({status:500,message:'Database Error'});
+        res.send({
+          status: 500,
+          message: 'Database Error'
+        });
       };
       res.render('simulation/workstation_edit', {
         title: 'Kaizen',
@@ -85,9 +93,14 @@ module.exports = function(app, passport) {
     var monk = req.db;
     var collection = monk.get('simulations');
     var sim_id = req.param("sim_id");
-    collection.findOne({id: sim_id }, function(err, docs) {
+    collection.findOne({
+      id: sim_id
+    }, function(err, docs) {
       if (err) {
-        res.send({status:500,message:'Database Error'});
+        res.send({
+          status: 500,
+          message: 'Database Error'
+        });
       };
       res.render('simulation/simulation_detail', {
         title: 'Kaizen',
@@ -100,9 +113,14 @@ module.exports = function(app, passport) {
     var monk = req.db;
     var collection = monk.get('simulations');
     var sim_id = req.param("sim_id");
-    collection.findOne({id: sim_id }, function(err, docs) {
+    collection.findOne({
+      id: sim_id
+    }, function(err, docs) {
       if (err) {
-        res.send({status:500,message:'Database Error'});
+        res.send({
+          status: 500,
+          message: 'Database Error'
+        });
       };
       res.send(JSON.stringify(docs));
     });
@@ -111,10 +129,14 @@ module.exports = function(app, passport) {
   // Save simulation manager
   app.post('/simulation/save', isLoggedIn, function(req, res) {
     var monk = req.db;
+    var new_sim = req.body.sim;
     var collection = monk.get('simulations');
     collection.insert(new_sim, function(err, doc) {
       if (err) {
-        res.send({status:500,message:'Database Error'});
+        res.send({
+          status: 500,
+          message: 'Database Error'
+        });
       } else {
         res.send(true);
       }
@@ -131,14 +153,30 @@ module.exports = function(app, passport) {
     collection.update(new_sim, function(err, doc) {
       if (err) {
         console.log(err);
-        res.send({status:500,message:'Database Error'});
+        res.send({
+          status: 500,
+          message: 'Database Error'
+        });
       } else {
         console.log('saved');
         res.send(true);
       }
     });
   });
-
+  // Datatable with excel data
+  app.get('/simulation/table/:simulation', function(req, res) {
+    var sim_id = req.param('simulation');
+    var monk = req.db;
+    var collection = monk.get('simulation_times');
+    collection.find({
+      simulation: sim_id
+    }, {}, function(e, docs) {
+      res.render('exceltable', {
+        times: docs,
+        title: 'Kaizen'
+      });
+    });
+  });
 
   // //////////// //
   //  Secret urls //

@@ -2,22 +2,22 @@ var app = require('express.io')();
 app.http().io();
 
 app.get('/simulation_status', function(req, res) {
-  var mongodb = req.db;
-  var collection = mongodb.get('simulation_status');
+  var monk = req.db;
+  var collection = monk.get('simulation_status');
   collection.find({}, {}, function(e, docs) {
     res.send(JSON.stringify(docs));
   });
 });
 
 app.get('/stations/:sim_id', function(req, res) {
-  var mongodb = req.db;
-  var collection = mongodb.get('simulations');
+  var monk = req.db;
+  var collection = monk.get('simulations');
   var sim_id = req.param('sim_id');
 });
 
 app.get('/station_data/:sim_id/:station_id', function(req, res) {
-  var mongodb = req.db;
-  var collection = mongodb.get('simulations');
+  var monk = req.db;
+  var collection = monk.get('simulations');
   var sim_id = req.param('sim_id');
   var station_id = req.param('station_id');
   collection.findOne({
@@ -52,9 +52,18 @@ app.get('/station_data/:sim_id/:station_id', function(req, res) {
 });
 
 app.get('/station_types', function(req, res) {
-  var mongodb = req.db;
-  var collection = mongodb.get('station_types');
+  var monk = req.db;
+  var collection = monk.get('station_types');
   collection.find({}, {}, function(e, docs) {
+    res.send(JSON.stringify(docs));
+  });
+});
+
+app.get('/simulation_times/:sim_id', function(req, res) {
+  var monk = req.db;
+  var sim_id = req.param('sim_id');
+  var collection = monk.get('simulation_times');
+  collection.find({simulation:sim_id}, {}, function(e, docs) {
     res.send(JSON.stringify(docs));
   });
 });

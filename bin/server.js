@@ -25,8 +25,6 @@ app.io.route('station', {
     console.log('join event');
     var room = req.data.room;
     var station = req.data.unit;
-    console.log(room);
-    console.log(station);
     req.io.join(room);
     if (station !== undefined) {
       req.io.room(room).broadcast('lock', {
@@ -59,17 +57,14 @@ app.io.route('station', {
       start: message.start_time,
       end: message.end_time,
     }
-    console.log(new_data);
     if (event === 'start' || event === 'pass') {
       collection.insert(new_data, function(err, doc) {
-        console.log(doc);
         message.id = doc._id;
+        req.io.room(room).broadcast('delivery', message);
       });
     } else {
-      console.log(message);
       collection.update({
-        simulation: message.simulation,
-        item: message.item
+        id: message.id
       }, {
         $set: {
           end: message.end_time
@@ -79,9 +74,8 @@ app.io.route('station', {
           console.log(err);
         };
       });
+      req.io.room(room).broadcast('delivery', message);
     }
-    // broadcast to deliver item
-    req.io.room(room).broadcast('delivery', message);
   },
   send: function(req) {
     // remove your customer
