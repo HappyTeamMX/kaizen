@@ -22,7 +22,7 @@ var app = require('../app');
 
 app.io.route('station', {
   join: function(req) {
-    console.log('join event');
+    console.log('join event launched');
     var room = req.data.room;
     var station = req.data.unit;
     req.io.join(room);

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+   .container
+       h1.title Simulation Detail
+       .well.col-sm-10.col-sm-offset-1
+         .table-responsive
+           table.dataTable.table.table-hover
+             thead
+               th ID Order
+               th Station
+               th Send to
+               th Start time
+               th End time
+             tbody
+               for order in times
+                  tr(ng-repeat="order in all_times")
+                     td #{ order.item }
+                     td #{ order.sender }
+                     td #{ order.target }
+                     td #{ order.start }
+                     td #{ order.end }
