@@ -1,6 +1,6 @@
 {
   "name": "kaizen",
-  "version": "0.0.0",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/server"
@@ -20,8 +20,5 @@
     "bcrypt-nodejs": "latest",
     "consolidate": "latest",
     "less-middleware": "latest",
-    "coffee-script": "1.10",
-    "connect": "latest",
-    "mongoskin": "latest"
   }
 }
