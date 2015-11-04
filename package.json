@@ -1,29 +1,24 @@
 {
-  "name": "Kaizen",
-  "version": "0.7.0",
+  "name": "kaizen",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "node ./bin/server"
   },
   "dependencies": {
-    "express": "*",
-    "express.io": "*",
-    "serve-favicon": "*",
-    "passport": "*",
-    "passport-local": "*",
-    "morgan": "*",
-    "cookie-parser": "*",
-    "body-parser": "*",
-    "debug": "*",
-    "ejs": "*",
-    "jade": "*",
-    "less-middleware": "*",
-    "mongodb": "*",
-    "monk": "*",
-    "mongoose": "*",
-    "connect-flash": "*",
-    "bcrypt-nodejs": "*",
-    "consolidate": "*"
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "jade": "~1.11",
+    "express.io": "~1.1",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0",
+    "passport": "~0.3",
+    "passport-local": "~1.0",
+    "mongodb": "~2.0",
+    "monk": "~1.0",
+    "bcrypt-nodejs": "latest",
+    "consolidate": "latest",
+    "less-middleware": "latest"
   }
 }
-
