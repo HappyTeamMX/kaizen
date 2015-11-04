@@ -21,6 +21,7 @@
     "consolidate": "latest",
     "less-middleware": "latest",
     "coffee-script": "1.10",
-    "connect": "latest"
+    "connect": "latest",
+    "mongoskin": "latest"
   }
 }
