@@ -19,6 +19,7 @@
     "monk": "~1.0",
     "bcrypt-nodejs": "latest",
     "consolidate": "latest",
-    "less-middleware": "latest"
+    "less-middleware": "latest",
+    "coffee-script": "1.10"
   }
 }
