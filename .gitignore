@@ -2,6 +2,6 @@
 *.css.map
 npm-debug.log
 data/
-node_modules/
+node_modules/*
 TODO
 .idea/
