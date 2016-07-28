@@ -27,11 +27,9 @@ app.get('/station_data/:sim_id/:station_id', function(req, res) {
           simulation: docs.id,
           all_stations: []
         }
-        console.log(docs);
         docs.stations.forEach(function(type) {
           type.units.forEach(function(unit) {
             if (unit.id === station_id) {
-              console.log(unit);
               station_data.name = unit.name;
               station_data.interval = unit.err_interval;
               station_data.duration = unit.err_duration;

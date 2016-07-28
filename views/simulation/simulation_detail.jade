@@ -9,38 +9,21 @@ block content
       .simulation-data.col-sm-5.col-sm-offset-1
         .row
           label Name:
-          .input-field {{ simulation.name }}
-          .flip
-            .input-group
-              input.form-control(ng:value="'{{ simulation.name }}'", ng:model="simulation.name")
-              span.input-group-btn
-                button.btn(type="button")
-                  i.fa.fa-check
+          .input-field.no-pointer {{ simulation.name }}
         .row
           label Date:
-          .input-field {{ simulation.date }}
-          .flip
-            .input-group
-              input.datepicker.form-control(ng:value="'{{ simulation.date }}'", ng:model="simulation.date")
-              span.input-group-btn
-                button.btn(type="button")
-                  i.fa.fa-check
+          .input-field.no-pointer {{ simulation.date }}
         .row
           label Takt time:
-          .input-field {{ simulation.takt_time }}
-          .flip
-            .input-group
-              input.form-control.timepicker(ng:value="'{{ simulation.takt_time }}'", ng:model="simulation.takt_time")
-              span.input-group-btn
-                button.btn(type="button")
-                  i.fa.fa-check
+          .input-field.no-pointer {{ simulation.takt_time }}
     .flags.right
-      button.btn.btn-success#start
-        i.fa.fa-play
-        span Start Simulation
-      button.btn.btn-warning#end
-        i.fa.fa-stop
-        span End Simulation
+      if user
+        button.btn.btn-success#start
+          i.fa.fa-play
+          span Start Simulation
+        button.btn.btn-warning#end
+          i.fa.fa-stop
+          span End Simulation
 
     .well.col-sm-12
       .diagram
@@ -69,5 +52,6 @@ block content
                           type='button',
                           id="b{{unit.id}}",
                         ) Open
+
 block extended-scripts
   script(src="/js/workstation_load.js")

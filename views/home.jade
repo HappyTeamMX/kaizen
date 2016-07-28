@@ -8,7 +8,7 @@ block content
           i.fa.fa-plus
           span New Simulation
       .lastest.col-sm-offset-1
-        h2.subhead Lastest Simulations
+        h2.subhead Latest Simulations
         ul.list
           for item in simulations
             li
@@ -16,7 +16,8 @@ block content
               span(class="pop", data-toggle="popover")  #{item.name} | #{item.date}
                 .popover
                   span
-                    a.btn(href="/simulation/#{item.id}") Diagram
+                    a.btn(href="/simulation/#{item.id}") Show
+                    a.btn(href="/simulation/edit/#{item.id}") Edit
                     a.btn(href="/simulation/table/#{item.id}") Data
       .actions.row
         a.right(href="simulation/list")

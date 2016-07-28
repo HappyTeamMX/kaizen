@@ -22,12 +22,13 @@ html(lang="en", ng-app="workstation")
           a(href="/home").navbar-brand
             img(src="/img/logo-alpha-nav.png" height=50)=title
         .collapse.navbar-collapse.navbar-ex1-collapse
-          ul.nav.navbar-nav.navbar-right
-            li
-              span.user kaizen
-            li
-              a(href="/logout")
-                i.fa.fa-sign-out Logout
+          if user
+            ul.nav.navbar-nav.navbar-right
+              li
+                span.user kaizen
+              li
+                a(href="/logout")
+                  i.fa.fa-sign-out Logout
     .content
       block content
     footer

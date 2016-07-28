@@ -1,5 +1,4 @@
-var sim_id = $('#simulation')
-  .attr('data_id');
+var sim_id = $('#simulation').attr('data_id');
 
 var workstation = angular.module('workstation', []);
 
@@ -21,20 +20,16 @@ workstation.controller('Workstation', function($scope, $http) {
       $scope.simulation = result.data;
     });
 
-
-
   $scope.save = function() {
     console.log(this.simulation);
     // Store the data-dump of the FORM scope.
-    var request = $http.post("/simulation/save", {
+    var request = $http.post("/simulation/update/" + sim_id, {
         sim: this.simulation
       })
       .success(function() {
-        $('.alert')
-          .show();
+        $('.alert').show();
       });
   }
-
 
   $scope.control_action = function(action, target) {
       // Remove Column
